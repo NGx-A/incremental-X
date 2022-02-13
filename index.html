@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Incremental</title>
+</head>
+<body>
+    <div class="version">v0.0.0</div>
+
+    <div class="currency-container">
+        <div class="currency x">10x</div>
+        <div class="currencyPerSec x-s">+30/s</div>
+    </div>
+
+    <div class="navBar">
+        <div class="navBtn" onclick="openTab('settings')">Settings</div>
+        <div class="navBtn" onclick="openTab('main')">Main</div>
+        <div class="navBtn" onclick="openTab('mastery')">Mastery</div>
+    </div>
+
+    <div class="center">
+        <div class="progressBar"></div>
+    </div>
+    
+    <div class="tab" id="settings" style="display: none;">
+        <div class="button reset" onclick="reset()" style="color: red;">HARD RESET</div>
+        <div class="button" id="offProd" onclick="changeSetting('offlineProduction')">Offline production: ON</div>
+    </div>
+
+    <div class="tab" id="main" style="display: none;">
+        <div class="button upgrade" onclick="buyUpgrade('1')">
+            <span id="upgrade1Effect">+1 x/s</span> <br>
+            <span id="upgrade1Level">Level: 1</span> <br>
+            <span id="upgrade1Cost">Cost: 5x</span>
+        </div>
+        <div class="button upgrade" onclick="buyUpgrade('2')">
+            <span id="upgrade2Effect">+12.5% x/s</span> <br>
+            <span id="upgrade2Level">Level: 1</span> <br>
+            <span id="upgrade2Cost">Cost: 15x</span>
+        </div>
+        <div class="button upgrade" onclick="buyUpgrade('3')">
+            <span id="upgrade3Effect">+20% to upgrade 1</span> <br>
+            <span id="upgrade3Level">Level: 1</span> <br>
+            <span id="upgrade3Cost">Cost: 1kx</span>
+        </div>
+        <div class="button upgrade" onclick="buyUpgrade('4')">
+            <span id="upgrade4Effect">x/s rasied to 0.05</span> <br>
+            <span id="upgrade4Level">Level: 1</span> <br>
+            <span id="upgrade4Cost">Cost: 2.5kx</span>
+        </div>
+        <div class="button upgrade" onclick="buyUpgrade('5')">
+            <span id="upgrade5Effect">Upgrade above becomes multiplicative</span> <br>
+            <span id="upgrade5Level">Level: 1</span> <br>
+            <span id="upgrade5Cost">Cost: 10kx</span>
+        </div>
+        <div class="button upgrade" onclick="buyUpgrade('6')">
+            <span id="upgrade6Effect">Gain +0.2 extra EXP</span> <br>
+            <span id="upgrade6Level">Level: 0</span> <br>
+            <span id="upgrade6Cost">Cost: 10kx</span>
+        </div>
+    </div>
+
+    <div class="tab" id="mastery" style="display: none;">
+        <div class="mastery-container" style="display: none;">
+            <span class="masteryPerk-Level">Mastery Level 1:</span>
+            <span class="masteryPerk">15% more x/s</span>
+        </div>
+        <div class="mastery-container" style="display: none;">
+            <span class="masteryPerk-Level">Mastery Level 2:</span>
+            <span class="masteryPerk">10% lower scaling for upgrades</span>
+        </div>
+        <div class="mastery-container" style="display: none;">
+            <span class="masteryPerk-Level">Mastery Level 3:</span>
+            <span class="masteryPerk">+0.3 more mastery EXP</span>
+        </div>
+        <div class="mastery-container" style="display: none;">
+            <span class="masteryPerk-Level">Mastery Level 4:</span>
+            <span class="masteryPerk">25% more x/s</span>
+        </div>
+        <div class="mastery-container" style="display: none;">
+            <span class="masteryPerk-Level">Mastery Level 5:</span>
+            <span class="masteryPerk">When buying an upgrade get +0.1 extra level </span>
+        </div>
+    </div>
+</body>
+<script src="javascript/game.js"></script>
+<script src="javascript/UI.js"></script>
+<script src="javascript/settings.js"></script>
+<script src="javascript/format.js"></script>
+<script src="javascript/save.js"></script>
+</html>

@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+:root {
+    --progressBarText: "0";
+    --progressBarWidth: 5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #030303;
+    font-family: 'Rubik', sans-serif;
+    user-select: none;
+}
+
+.version {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+}
+
+.currency-container {
+    display: flex;
+    background-color: #222;
+    width: 100vw;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.currency {
+    margin: 10px;
+}
+
+.currencyPerSec {
+    font-size: 1rem;
+    color: #999;
+    position: relative;
+    bottom: 10px;
+    font-style: italic;
+}
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    color: white;
+}
+
+.navBtn {
+    font-size: 1.4rem;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 0.2s ease-in all;
+    cursor: pointer;
+}
+
+.button:hover,
+.navBtn:hover {
+    background-color: white;
+    color: black;
+}
+
+.button {
+    display: grid;
+    place-content: center;
+    background-color: #222;
+    color: white;
+    margin: 10px;
+    text-align: center;
+    height: 120px;
+    width: 200px;
+    border-radius: 5px;
+    transition: 0.2s ease-in all;
+    cursor: pointer;
+    line-height: 25px;
+}
+
+.progressBar {
+    position: relative;
+    width: 300px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 50px;
+    top: 100px;
+    text-align: center;
+    color: black;
+}
+
+.progressBar::after {
+    content: var(--progressBarText);
+    position: absolute;
+    left: 0;
+    min-width: 5%;
+    width: var(--progressBarWidth);
+    height: 100%;
+    background-color: aqua;
+    box-shadow: 0 0 10px aqua;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.tab {
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    place-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    color: white;
+}
+
+#mastery {
+    flex-direction: column;
+}
+
+.mastery-container {
+    display: grid;
+    font-size: 1.2rem;
+    grid-template-columns: 1fr 1fr;
+    width: 600px;
+}
+
+.masteryPerk-Level {
+    text-align: right;
+}
+
+.masteryPerk-Level,
+.masteryPerk {
+    margin: 10px;
+}
+
+
+
+.center {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fadeIn {
+    animation: fade forwards 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes fade {
+    100% {opacity: 100%;}
+}
