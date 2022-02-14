@@ -31,7 +31,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 2vh;
     font-weight: bold;
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 .currencyPerSec {
-    font-size: 1rem;
+    font-size: 1.2vh;
     color: #999;
     position: relative;
     bottom: 0.8vh;
@@ -57,7 +57,7 @@ body {
 }
 
 .navBtn {
-    font-size: 1.4rem;
+    font-size: 1.7vh;
     padding: 1.3vh;
     background-color: #333;
     border-radius: 0.3vh;
@@ -81,6 +81,7 @@ body {
     text-align: center;
     height: 10vh;
     width: 8vw;
+    font-size: 1.3vh;
     border-radius: 0.3vh;
     transition: 0.2s ease-in all;
     cursor: pointer;
@@ -90,6 +91,7 @@ body {
 .masteryProgress {
     position: relative;
     top: 6vh;
+    font-size: 1.3vh;
 }
 
 .progressBar {
@@ -157,7 +159,7 @@ body {
 
 .mastery-container {
     display: grid;
-    font-size: 1.2rem;
+    font-size: 1.5vh;
     grid-template-columns: 1fr 1fr;
     width: 25vw;
 }
