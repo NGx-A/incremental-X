@@ -36,14 +36,15 @@ body {
 }
 
 .currency {
-    margin: 10px;
+    margin-left: 1.5vw;
+    text-shadow: 0 0 5px currentColor;
 }
 
 .currencyPerSec {
     font-size: 1rem;
     color: #999;
     position: relative;
-    bottom: 10px;
+    bottom: 0.8vh;
     font-style: italic;
 }
 
@@ -57,10 +58,10 @@ body {
 
 .navBtn {
     font-size: 1.4rem;
-    padding: 15px;
+    padding: 1.3vh;
     background-color: #333;
-    border-radius: 5px;
-    margin: 10px;
+    border-radius: 0.3vh;
+    margin: 0.8vh;
     transition: 0.2s ease-in all;
     cursor: pointer;
 }
@@ -76,25 +77,31 @@ body {
     place-content: center;
     background-color: #222;
     color: white;
-    margin: 10px;
+    margin: 1vh;
     text-align: center;
-    height: 120px;
-    width: 200px;
-    border-radius: 5px;
+    height: 10vh;
+    width: 8vw;
+    border-radius: 0.3vh;
     transition: 0.2s ease-in all;
     cursor: pointer;
-    line-height: 25px;
+    line-height: 2vh;
+}
+
+.masteryProgress {
+    position: relative;
+    top: 6vh;
 }
 
 .progressBar {
     position: relative;
-    width: 300px;
-    height: 20px;
+    width: 15vw;
+    height: 1.5vh;
     background-color: gray;
-    border-radius: 50px;
-    top: 100px;
+    border-radius: 10vh;
+    top: 7vh;
     text-align: center;
     color: black;
+    font-size: 1.3vh;
 }
 
 .progressBar::after {
@@ -106,17 +113,41 @@ body {
     height: 100%;
     background-color: aqua;
     box-shadow: 0 0 10px aqua;
-    border-radius: 50px;
+    border-radius: 10vh;
     transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .tab {
     display: grid;
-    grid-template-columns: repeat(3, 250px);
+    grid-template-columns: repeat(3, 10vw);
     place-content: center;
     justify-content: center;
     align-items: center;
     height: 50vh;
+    color: white;
+}
+
+.prestige-container {
+    position: absolute;
+    left: 5vw;
+}
+
+.button.prestige {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.button.prestige:hover {
+    background-color: rgb(255, 166, 0);
+    color: white;
+}
+
+.button.yUpgrade {
+    background-color: rgb(255, 120, 0);
+    text-shadow: 0 0 5px currentColor;
+}
+
+.button.yUpgrade:hover {
+    background-color: rgb(255, 0, 0);
     color: white;
 }
 
@@ -128,7 +159,7 @@ body {
     display: grid;
     font-size: 1.2rem;
     grid-template-columns: 1fr 1fr;
-    width: 600px;
+    width: 25vw;
 }
 
 .masteryPerk-Level {
@@ -137,22 +168,13 @@ body {
 
 .masteryPerk-Level,
 .masteryPerk {
-    margin: 10px;
+    margin: 1vh;
 }
-
-
 
 .center {
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.fadeIn {
-    animation: fade forwards 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes fade {
-    100% {opacity: 100%;}
+    flex-direction: column;
 }

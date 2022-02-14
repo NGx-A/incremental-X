@@ -5,10 +5,12 @@ let game = {
 
     x: 5,
     xPerSecond: 0,
+    y: 0,
+    totalY: 0,
 
     masteryLevel: 0,
     masteryExp: 0,
-    masteryReq: 15,
+    masteryReq: 30,
     masteryMultiplier: 1,
     masteryBonusExp: 0,
     perksUsed: 0,
@@ -19,7 +21,10 @@ let game = {
         level: 0,
         extraLevel: 0,
         costScaling: 1.15,
-        effect: 1
+        baseCostScaling: 1.15,
+        effect: 1,
+        baseEffect: 1,
+        superChargedLevel: 0
     },
     upgrade2: {
         baseCost: 15,
@@ -27,31 +32,43 @@ let game = {
         level: 0,
         extraLevel: 0,
         costScaling: 1.35,
-        effect: 1
+        baseCostScaling: 1.35,
+        effect: 1,
+        baseEffect: 1,
+        superChargedLevel: 0
     },
     upgrade3: {
-        baseCost: 1e3,
-        cost: 1e3,
+        baseCost: 500,
+        cost: 500,
         level: 0,
         extraLevel: 0,
-        costScaling: 1.5,
-        effect: 1
+        costScaling: 1.65,
+        baseCostScaling: 1.65,
+        effect: 1,
+        baseEffect: 1,
+        superChargedLevel: 0
     },
     upgrade4: {
         baseCost: 2.5e3,
         cost: 2.5e3,
         level: 0,
         extraLevel: 0,
-        costScaling: 1.9,
-        effect: 0.05
+        costScaling: 2.75,
+        baseCostScaling: 2.75,
+        effect: 0.02,
+        baseEffect: 0.02,
+        superChargedLevel: 0
     }, 
     upgrade5: {
         baseCost: 1e4,
         cost: 1e4,
         level: 0,
         extraLevel: 0,
-        costScaling: 0,
-        effect: 0
+        costScaling: 1,
+        baseCostScaling: 1,
+        effect: 0,
+        baseEffect: 0,
+        superChargedLevel: 0
     }, 
     upgrade6: {
         baseCost: 1e4,
@@ -59,7 +76,10 @@ let game = {
         level: 0,
         extraLevel: 0,
         costScaling: 1.85,
-        effect: 0
+        baseCostScaling: 1.85,
+        effect: 0,
+        baseEffect: 0,
+        superChargedLevel: 0
     }
 }
 let lastUpdate = Date.now()
@@ -70,6 +90,9 @@ const gameLoop = () => {
 
     game.x += game.xPerSecond * diff
 
+    //Check if can prestige
+    if(game.x >= 1e6) document.querySelectorAll(".prestige")[0].style.display = "grid"
+
     lastUpdate = Date.now()
 }
 
@@ -79,41 +102,55 @@ const buyUpgrade = (number) => {
 
     game.x -= game['upgrade' + number].cost
     game['upgrade' + number].level++
+    game['upgrade' + number].cost *= game['upgrade' + number].costScaling
 
-    if(number != 5) {
-        if(game.masteryLevel >= 5) game['upgrade' + number].extraLevel += 0.1
-        game['upgrade' + number].cost *= game['upgrade' + number].costScaling
-    }
-
-    game.upgrade1.effect = ((game.upgrade3.level + game.upgrade3.extraLevel) * 0.2 + 1)
-    if(game.upgrade5.level != 1) game.upgrade2.effect = (game.upgrade2.level + game.upgrade2.extraLevel) * 0.125 + 1
-    else game.upgrade2.effect = Math.pow(1.125, game.upgrade2.level + game.upgrade2.extraLevel)
+    //Set upgrade effects
+    if(yUpgrade[1].bought) game.upgrade1.effect = (1 + game.upgrade1.superChargedLevel / 2) * (1 + (0.2 + game.upgrade3.superChargedLevel * 0.05) * (game.upgrade3.level + game.upgrade3.extraLevel)) * 2
+    else game.upgrade1.effect = (1 + game.upgrade1.superChargedLevel / 2) * (1 + (0.2 + game.upgrade3.superChargedLevel * 0.05) * (game.upgrade3.level + game.upgrade3.extraLevel))
+    if(game.upgrade5.level != 1) game.upgrade2.effect = (game.upgrade2.level + game.upgrade2.extraLevel) * (0.125 + game.upgrade2.superChargedLevel * 0.025) + 1 
+    else game.upgrade2.effect = Math.pow(1.125 + game.upgrade2.superChargedLevel * 0.025, game.upgrade2.level + game.upgrade2.extraLevel)
     upgrade1Effect = (game.upgrade1.level + game.upgrade1.extraLevel) * game.upgrade1.effect
-    upgrade4Power = 1 + (game.upgrade4.level + game.upgrade4.extraLevel) * game.upgrade4.effect
+
+    if(game.masteryLevel >= 5) upgrade4Power = 1 + (game.upgrade4.level + game.upgrade4.extraLevel) * game.upgrade4.effect + 0.01
+    else upgrade4Power = 1 + (game.upgrade4.level + game.upgrade4.extraLevel) * game.upgrade4.effect 
+
     game.upgrade6.effect = (game.upgrade6.level + game.upgrade6.extraLevel) * 0.2
 
-    if(game.masteryLevel >= 3) game.masteryBonusExp = 0.2 + game.upgrade6.effect
-    else game.masteryBonusExp = game.upgrade6.effect
+    //Set mastery bonus xp
+    if(game.masteryLevel >= 3) game.masteryBonusExp = 0.2 + game.upgrade6.effect * 2
+    else game.masteryBonusExp = game.upgrade6.effect * 2
+    
+    
 
-    if(number != 6) gainMastery(parseInt(number)) 
+    //Supercharge check
+    if(game['upgrade' + number].level > 100) {
+        game['upgrade' + number].level = 0
+        game['upgrade' + number].costScaling = ((game['upgrade' + number].costScaling - 1) * 1.7) + 1
+        game['upgrade' + number].cost = game['upgrade' + number].baseCost
+        game['upgrade' + number].superChargedLevel++
+    }
+
+    gainMastery(parseInt(number)) 
     game.xPerSecond = Math.pow(upgrade1Effect * game.upgrade2.effect * game.masteryMultiplier, upgrade4Power)
 }
 
 const gainMastery = (amount) => {
-    game.masteryExp += amount + game.masteryBonusExp
+    if(yUpgrade[2].bought) game.masteryExp += (amount + game.masteryBonusExp) * 2
+    else game.masteryExp += amount + game.masteryBonusExp
     if(game.masteryExp >= game.masteryReq) {
         game.masteryExp -= game.masteryReq
-        game.masteryReq += 5 + game.masteryLevel * 2
+        game.masteryReq += 10 * (game.masteryLevel + 1)
         game.masteryLevel++
     }
     domRoot.style.setProperty('--progressBarWidth', `${game.masteryExp / game.masteryReq * 100}%`)
     domRoot.style.setProperty('--progressBarText', `"${game.masteryLevel}"`)
+    document.querySelector(".masteryProgress").textContent = `${format(game.masteryExp, 1)} EXP / ${game.masteryReq} EXP`
 
     masteryPerks()
 }
 
 const masteryPerks = () => {
-    if(game.masteryLevel >= 1 && game.masteryLevel < 6) document.querySelectorAll(".mastery-container")[game.masteryLevel - 1].style.display = "grid"
+    if(game.masteryLevel >= 1 && game.masteryLevel < 7) document.querySelectorAll(".mastery-container")[game.masteryLevel - 1].style.display = "grid"
 
     if(game.masteryLevel >= 1 && game.perksUsed < 1) {
         game.perksUsed = 1
@@ -136,6 +173,9 @@ const masteryPerks = () => {
     }
     if(game.masteryLevel >= 5 && game.perksUsed < 5) {
         game.perksUsed = 5
+    }
+    if(game.masteryLevel >= 6) {
+        game.masteryMultiplier = 1.25 * 1.15 * Math.pow(1.07, game.masteryLevel)
     }
 }
 

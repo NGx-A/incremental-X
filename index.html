@@ -13,15 +13,18 @@
     <div class="currency-container">
         <div class="currency x">10x</div>
         <div class="currencyPerSec x-s">+30/s</div>
+        <div class="currency y" style="color: orange; display: none;">0y</div>
     </div>
 
     <div class="navBar">
         <div class="navBtn" onclick="openTab('settings')">Settings</div>
         <div class="navBtn" onclick="openTab('main')">Main</div>
         <div class="navBtn" onclick="openTab('mastery')">Mastery</div>
+        <div class="navBtn" onclick="openTab('y')" style="color: orange; text-shadow: 0 0 5px currentColor; display: none;">y</div>
     </div>
 
     <div class="center">
+        <div class="masteryProgress" style="color: white;">0 / 50</div>
         <div class="progressBar"></div>
     </div>
     
@@ -31,6 +34,13 @@
     </div>
 
     <div class="tab" id="main" style="display: none;">
+        <div class="prestige-container">
+            <div class="button prestige" onclick="prestige('y')" style="display: none;">
+                <span>Y prestige</span> <br>
+                <span id="yPrestigeGain">Gain +1y</span>
+            </div>
+        </div>
+
         <div class="button upgrade" onclick="buyUpgrade('1')">
             <span id="upgrade1Effect">+1 x/s</span> <br>
             <span id="upgrade1Level">Level: 1</span> <br>
@@ -47,7 +57,7 @@
             <span id="upgrade3Cost">Cost: 1kx</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('4')">
-            <span id="upgrade4Effect">x/s rasied to 0.05</span> <br>
+            <span id="upgrade4Effect">x/s rasied to 1.02</span> <br>
             <span id="upgrade4Level">Level: 1</span> <br>
             <span id="upgrade4Cost">Cost: 2.5kx</span>
         </div>
@@ -82,12 +92,32 @@
         </div>
         <div class="mastery-container" style="display: none;">
             <span class="masteryPerk-Level">Mastery Level 5:</span>
-            <span class="masteryPerk">When buying an upgrade get +0.1 extra level </span>
+            <span class="masteryPerk">Raise x/s to 1.01 </span>
+        </div>
+        <div class="mastery-container" style="display: none;">
+            <span class="masteryPerk-Level">Mastery Level 6:</span>
+            <span class="masteryPerk" id="mastery6">Each mastery level grants +7% x/s </span>
+        </div>
+    </div>
+
+    <div class="tab" id="y" style="display: none;">
+        <div class="button yUpgrade" onclick="buyYUpgrade('1')">
+            <span>x2 to upgrade 1</span>
+            <span>Cost: 1y</span>
+        </div>
+        <div class="button yUpgrade" onclick="buyYUpgrade('2')">
+            <span>x2 EXP</span>
+            <span>Cost: 1y</span>
+        </div>
+        <div class="button yUpgrade" onclick="buyYUpgrade('3')">
+            <span>x2 y gain</span>
+            <span>Cost: 3y</span>
         </div>
     </div>
 </body>
 <script src="javascript/game.js"></script>
 <script src="javascript/UI.js"></script>
+<script src="javascript/prestige.js"></script>
 <script src="javascript/settings.js"></script>
 <script src="javascript/format.js"></script>
 <script src="javascript/save.js"></script>
