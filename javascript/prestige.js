@@ -1,8 +1,10 @@
 const prestige = (prestigeType) => {
-    if(prestigeType == "y") {
-        if(yUpgrade[1].bought) game.y += Math.floor(Math.log10(game.x) - 5) * 2
+    if(prestigeType == "y" && game.x >= 1e6) {
+        if(yUpgrade[3].bought) game.y += Math.floor(Math.log10(game.x) - 5) * 2
         else game.y += Math.floor(Math.log10(game.x) - 5)
         game.totalY += Math.floor(Math.log10(game.x) - 5)
+
+        if(yUpgrade[4].bought) yUpgrade[4].multiplier = Math.sqrt(game.y + 1)
 
         document.querySelector(".y").style.display = "inline"
         document.querySelectorAll(".navBtn")[3].style.display = "block"
@@ -18,6 +20,7 @@ const prestige = (prestigeType) => {
             game['upgrade' + i].effect = game['upgrade' + i].baseEffect
             game['upgrade' + i].superChargedLevel = 0
         }
+
         game.xPerSecond = 0
         game.masteryLevel = 0
         game.masteryExp = 0
@@ -26,6 +29,11 @@ const prestige = (prestigeType) => {
         game.masteryBonusExp = 0
         game.perksUsed = 0
         gainMastery(0)
+
+        //Hide mastery divs
+        for(i = 0; i < 6; i++) {
+            document.querySelectorAll(".mastery-container")[i].style.display = "none"
+        }
     }
 }
 
@@ -41,6 +49,15 @@ let yUpgrade = {
     3: {
         cost: 3,
         bought: false
+    },
+    4: {
+        cost: 5,
+        bought: false,
+        multiplier: 1
+    },
+    5: {
+        cost: 5,
+        bought: false
     }
 }
 
@@ -49,5 +66,12 @@ const buyYUpgrade = (number) => {
     if(game.y >= yUpgrade[number].cost && !yUpgrade[number].bought) {
         game.y -= yUpgrade[number].cost
         yUpgrade[number].bought = true
+        document.querySelector("#yUpgrade" + number + "Cost").textContent = `Maxed`
+    }
+    if(yUpgrade[4].bought) yUpgrade[4].multiplier = Math.sqrt(game.y + 1)
+    if(yUpgrade[5].bought) {
+        document.querySelectorAll(".upgrade")[6].style.display = "grid"
+        document.querySelectorAll(".upgrade")[7].style.display = "grid"
+        document.querySelectorAll(".upgrade")[8].style.display = "grid"
     }
 }

@@ -1,5 +1,5 @@
 let game = {
-    version: "v0.2.1",
+    version: "v0.2.2",
     currentTab: "main",
     tabs: [],
 
@@ -75,8 +75,8 @@ let game = {
         cost: 1e4,
         level: 0,
         extraLevel: 0,
-        costScaling: 1.85,
-        baseCostScaling: 1.85,
+        costScaling: 1.45,
+        baseCostScaling: 1.45,
         effect: 0,
         baseEffect: 0,
         superChargedLevel: 0
@@ -104,9 +104,18 @@ const buyUpgrade = (number) => {
     game['upgrade' + number].level++
     game['upgrade' + number].cost *= game['upgrade' + number].costScaling
 
+    //Supercharge check
+    if(game['upgrade' + number].level >= 101) {
+        game['upgrade' + number].level = 0
+        game['upgrade' + number].costScaling = ((game['upgrade' + number].costScaling - 1) * 1.2) + 1
+        game['upgrade' + number].superChargedLevel++
+        game['upgrade' + number].cost = game['upgrade' + number].baseCost * (game['upgrade' + number].superChargedLevel + 1)
+    }
+
     //Set upgrade effects
     if(yUpgrade[1].bought) game.upgrade1.effect = (1 + game.upgrade1.superChargedLevel / 2) * (1 + (0.2 + game.upgrade3.superChargedLevel * 0.05) * (game.upgrade3.level + game.upgrade3.extraLevel)) * 2
     else game.upgrade1.effect = (1 + game.upgrade1.superChargedLevel / 2) * (1 + (0.2 + game.upgrade3.superChargedLevel * 0.05) * (game.upgrade3.level + game.upgrade3.extraLevel))
+    
     if(game.upgrade5.level != 1) game.upgrade2.effect = (game.upgrade2.level + game.upgrade2.extraLevel) * (0.125 + game.upgrade2.superChargedLevel * 0.025) + 1 
     else game.upgrade2.effect = Math.pow(1.125 + game.upgrade2.superChargedLevel * 0.025, game.upgrade2.level + game.upgrade2.extraLevel)
     upgrade1Effect = (game.upgrade1.level + game.upgrade1.extraLevel) * game.upgrade1.effect
@@ -119,19 +128,9 @@ const buyUpgrade = (number) => {
     //Set mastery bonus xp
     if(game.masteryLevel >= 3) game.masteryBonusExp = 0.2 + game.upgrade6.effect * 2
     else game.masteryBonusExp = game.upgrade6.effect * 2
-    
-    
-
-    //Supercharge check
-    if(game['upgrade' + number].level > 100) {
-        game['upgrade' + number].level = 0
-        game['upgrade' + number].costScaling = ((game['upgrade' + number].costScaling - 1) * 1.7) + 1
-        game['upgrade' + number].cost = game['upgrade' + number].baseCost
-        game['upgrade' + number].superChargedLevel++
-    }
 
     gainMastery(parseInt(number)) 
-    game.xPerSecond = Math.pow(upgrade1Effect * game.upgrade2.effect * game.masteryMultiplier, upgrade4Power)
+    game.xPerSecond = Math.pow(upgrade1Effect * game.upgrade2.effect * game.masteryMultiplier * yUpgrade[4].multiplier, upgrade4Power) 
 }
 
 const gainMastery = (amount) => {
@@ -144,7 +143,7 @@ const gainMastery = (amount) => {
     }
     domRoot.style.setProperty('--progressBarWidth', `${game.masteryExp / game.masteryReq * 100}%`)
     domRoot.style.setProperty('--progressBarText', `"${game.masteryLevel}"`)
-    document.querySelector(".masteryProgress").textContent = `${format(game.masteryExp, 1)} EXP / ${game.masteryReq} EXP`
+    document.querySelector(".masteryProgress").textContent = `${format(game.masteryExp, 1)} EXP / ${format(game.masteryReq, 0)} EXP`
 
     masteryPerks()
 }

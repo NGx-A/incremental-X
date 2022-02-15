@@ -72,6 +72,11 @@ const loadGame = () => {
     if(typeof savedGame.yUpgrade2_Bought !== "undefined") yUpgrade[2].bought = savedGame.yUpgrade2_Bought
     if(typeof savedGame.yUpgrade3_Cost !== "undefined") yUpgrade[3].cost = savedGame.yUpgrade3_Cost
     if(typeof savedGame.yUpgrade3_Bought !== "undefined") yUpgrade[3].bought = savedGame.yUpgrade3_Bought
+    if(typeof savedGame.yUpgrade4_Cost !== "undefined") yUpgrade[4].cost = savedGame.yUpgrade4_Cost
+    if(typeof savedGame.yUpgrade4_Bought !== "undefined") yUpgrade[4].bought = savedGame.yUpgrade4_Bought
+    if(typeof savedGame.yUpgrade4_Multiplier !== "undefined") yUpgrade[4].multiplier = savedGame.yUpgrade4_Multiplier
+    if(typeof savedGame.yUpgrade5_Cost !== "undefined") yUpgrade[5].cost = savedGame.yUpgrade5_Cost
+    if(typeof savedGame.yUpgrade5_Bought !== "undefined") yUpgrade[5].bought = savedGame.yUpgrade5_Bought
     
     //Settings
     if(typeof savedGame.offlineProduction !== "undefined") setting.offlineProduction = savedGame.offlineProduction
@@ -149,6 +154,12 @@ const saveGame = () => {
     yUpgrade2_Bought: yUpgrade[2].bought,
     yUpgrade3_Cost: yUpgrade[3].cost,
     yUpgrade3_Bought: yUpgrade[3].bought,
+    yUpgrade4_Cost: yUpgrade[4].cost,
+    yUpgrade4_Bought: yUpgrade[4].bought,
+    yUpgrade4_Multiplier: yUpgrade[4].multiplier,
+    yUpgrade5_Cost: yUpgrade[5].cost,
+    yUpgrade5_Bought: yUpgrade[5].bought,
+
 
     //Settings
     offlineProduction: setting.offlineProduction,
@@ -166,6 +177,15 @@ window.onload = function() {
         document.querySelectorAll(".navBtn")[3].style.display = "block"
     }
 
+    for(i = 0; i < 5; i++) {
+        if(yUpgrade[i + 1].bought) document.querySelector("#yUpgrade" + (i + 1) + "Cost").textContent = `Maxed`
+    }
+    if(yUpgrade[5].bought) {
+        document.querySelectorAll(".upgrade")[6].style.display = "grid"
+        document.querySelectorAll(".upgrade")[7].style.display = "grid"
+        document.querySelectorAll(".upgrade")[8].style.display = "grid"
+    }
+
     document.querySelector(`#${game.currentTab}`).style.display = "grid"
     if(game.currentTab == "mastery") document.querySelector(`#${game.currentTab}`).style.display = "flex"
 
@@ -175,7 +195,7 @@ window.onload = function() {
     gainMastery(0)
     if(game.masteryLevel >= 1)  {
         for(i = 0; i < game.masteryLevel; i++) {
-            if(i > 6) return
+            if(i > 5) return
             document.querySelectorAll(".mastery-container")[i].style.display = "grid"
         }
     }    
