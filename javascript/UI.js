@@ -24,7 +24,7 @@ const updateUI = () => {
     //document.querySelector("#upgrade4Effect").textContent = `x/s raised to 0.05`¨
 
     document.querySelector("#upgrade1TotalEffect").textContent = `+${format(game.upgrade1.totalEffect, 2)}x`
-    document.querySelector("#upgrade2TotalEffect").textContent = `+${(format(game.upgrade2.totalEffect - 1) * 100, 1)}%`
+    document.querySelector("#upgrade2TotalEffect").textContent = `+${format((game.upgrade2.totalEffect - 1) * 100, 1)}%`
     document.querySelector("#upgrade3TotalEffect").textContent = `+${format((game.upgrade3.totalEffect - 1) * 100, 0)}%`
     document.querySelector("#upgrade4TotalEffect").textContent = `^${format(game.upgrade4.totalEffect, 2)}`
     document.querySelector("#upgrade6TotalEffect").textContent = `+${format(game.upgrade6.totalEffect, 1)} EXP`
