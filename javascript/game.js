@@ -1,5 +1,5 @@
 let game = {
-    version: "v0.2.2",
+    version: "v0.2.3",
     currentTab: "main",
     tabs: [],
 
@@ -23,6 +23,7 @@ let game = {
         costScaling: 1.15,
         baseCostScaling: 1.15,
         effect: 1,
+        totalEffect: 1,
         baseEffect: 1,
         superChargedLevel: 0
     },
@@ -34,6 +35,7 @@ let game = {
         costScaling: 1.35,
         baseCostScaling: 1.35,
         effect: 1,
+        totalEffect: 1,
         baseEffect: 1,
         superChargedLevel: 0
     },
@@ -44,8 +46,9 @@ let game = {
         extraLevel: 0,
         costScaling: 1.65,
         baseCostScaling: 1.65,
-        effect: 1,
-        baseEffect: 1,
+        effect: 0,
+        totalEffect: 1,
+        baseEffect: 0.2,
         superChargedLevel: 0
     },
     upgrade4: {
@@ -56,6 +59,7 @@ let game = {
         costScaling: 2.75,
         baseCostScaling: 2.75,
         effect: 0.02,
+        totalEffect: 0,
         baseEffect: 0.02,
         superChargedLevel: 0
     }, 
@@ -67,6 +71,7 @@ let game = {
         costScaling: 1,
         baseCostScaling: 1,
         effect: 0,
+        totalEffect: 0,
         baseEffect: 0,
         superChargedLevel: 0
     }, 
@@ -77,7 +82,44 @@ let game = {
         extraLevel: 0,
         costScaling: 1.45,
         baseCostScaling: 1.45,
+        effect: 0.2,
+        totalEffect: 0,
+        baseEffect: 0.2,
+        superChargedLevel: 0
+    },
+    upgrade7: {
+        baseCost: 1e4,
+        cost: 1e4,
+        level: 0,
+        extraLevel: 0,
+        costScaling: 1.45,
+        baseCostScaling: 1.45,
         effect: 0,
+        totalEffect: 0,
+        baseEffect: 0,
+        superChargedLevel: 0
+    },
+    upgrade8: {
+        baseCost: 1e4,
+        cost: 1e4,
+        level: 0,
+        extraLevel: 0,
+        costScaling: 1.45,
+        baseCostScaling: 1.45,
+        effect: 0,
+        totalEffect: 0,
+        baseEffect: 0,
+        superChargedLevel: 0
+    },
+    upgrade9: {
+        baseCost: 1e4,
+        cost: 1e4,
+        level: 0,
+        extraLevel: 0,
+        costScaling: 1.45,
+        baseCostScaling: 1.45,
+        effect: 0,
+        totalEffect: 0,
         baseEffect: 0,
         superChargedLevel: 0
     }
@@ -107,30 +149,40 @@ const buyUpgrade = (number) => {
     //Supercharge check
     if(game['upgrade' + number].level >= 101) {
         game['upgrade' + number].level = 0
-        game['upgrade' + number].costScaling = ((game['upgrade' + number].costScaling - 1) * 1.2) + 1
+        game['upgrade' + number].costScaling = ((game['upgrade' + number].costScaling - 1) * 1.5) + 1
         game['upgrade' + number].superChargedLevel++
-        game['upgrade' + number].cost = game['upgrade' + number].baseCost * (game['upgrade' + number].superChargedLevel + 1)
+        game['upgrade' + number].cost = game['upgrade' + number].baseCost * (game['upgrade' + number].superChargedLevel + 4)
     }
 
-    //Set upgrade effects
-    if(yUpgrade[1].bought) game.upgrade1.effect = (1 + game.upgrade1.superChargedLevel / 2) * (1 + (0.2 + game.upgrade3.superChargedLevel * 0.05) * (game.upgrade3.level + game.upgrade3.extraLevel)) * 2
-    else game.upgrade1.effect = (1 + game.upgrade1.superChargedLevel / 2) * (1 + (0.2 + game.upgrade3.superChargedLevel * 0.05) * (game.upgrade3.level + game.upgrade3.extraLevel))
+    setUpgradeStats()    
     
-    if(game.upgrade5.level != 1) game.upgrade2.effect = (game.upgrade2.level + game.upgrade2.extraLevel) * (0.125 + game.upgrade2.superChargedLevel * 0.025) + 1 
-    else game.upgrade2.effect = Math.pow(1.125 + game.upgrade2.superChargedLevel * 0.025, game.upgrade2.level + game.upgrade2.extraLevel)
-    upgrade1Effect = (game.upgrade1.level + game.upgrade1.extraLevel) * game.upgrade1.effect
-
-    if(game.masteryLevel >= 5) upgrade4Power = 1 + (game.upgrade4.level + game.upgrade4.extraLevel) * game.upgrade4.effect + 0.01
-    else upgrade4Power = 1 + (game.upgrade4.level + game.upgrade4.extraLevel) * game.upgrade4.effect 
-
-    game.upgrade6.effect = (game.upgrade6.level + game.upgrade6.extraLevel) * 0.2
-
     //Set mastery bonus xp
-    if(game.masteryLevel >= 3) game.masteryBonusExp = 0.2 + game.upgrade6.effect * 2
-    else game.masteryBonusExp = game.upgrade6.effect * 2
+    if(yUpgrade[2].bought) {
+        if(game.masteryLevel >= 3) game.masteryBonusExp = 0.2 + game.upgrade6.totalEffect * 2
+        else game.masteryBonusExp = game.upgrade6.totalEffect * 2
+    }
+    else if(game.masteryLevel >= 3) game.masteryBonusExp = 0.2 + game.upgrade6.totalEffect
+    else game.masteryBonusExp = game.upgrade6.totalEffect
+    
 
     gainMastery(parseInt(number)) 
-    game.xPerSecond = Math.pow(upgrade1Effect * game.upgrade2.effect * game.masteryMultiplier * yUpgrade[4].multiplier, upgrade4Power) 
+    game.xPerSecond = Math.pow(game.upgrade1.totalEffect * game.upgrade2.totalEffect * game.masteryMultiplier * yUpgrade[4].multiplier, game.upgrade4.totalEffect) 
+}
+
+const setUpgradeStats = () => {
+//Set upgrade effects
+    if(yUpgrade[1].bought) game.upgrade1.effect = (game.upgrade1.baseEffect + game.upgrade1.superChargedLevel / 2) * game.upgrade3.totalEffect * 2
+    else game.upgrade1.effect = (game.upgrade1.baseEffect + game.upgrade1.superChargedLevel / 2) * game.upgrade3.totalEffect 
+    game.upgrade2.effect = 0.125 + game.upgrade2.superChargedLevel * 0.025
+    game.upgrade3.effect = game.upgrade3.baseEffect + game.upgrade3.superChargedLevel * 0.05
+
+//total effects
+    game.upgrade1.totalEffect = (game.upgrade1.level + game.upgrade1.extraLevel) * game.upgrade1.effect
+    if(game.upgrade5.level != 1) game.upgrade2.totalEffect = 1 + game.upgrade2.effect * (game.upgrade2.level + game.upgrade2.extraLevel)
+    else game.upgrade2.totalEffect = Math.pow(1 + game.upgrade2.effect, game.upgrade2.level + game.upgrade2.extraLevel)
+    game.upgrade3.totalEffect = 1 + game.upgrade3.effect * (game.upgrade3.level + game.upgrade3.extraLevel)
+    game.upgrade4.totalEffect = 1 + game.upgrade4.effect * (game.upgrade4.level + game.upgrade4.extraLevel)
+    game.upgrade6.totalEffect = game.upgrade6.effect * (game.upgrade6.level + game.upgrade6.extraLevel)
 }
 
 const gainMastery = (amount) => {

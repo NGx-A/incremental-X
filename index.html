@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="version">v0.0.0</div>
+    <div style="color: white; position: absolute;">Hotkeys: 1 - 6</div>
 
     <div class="currency-container">
         <div class="currency x">10x</div>
@@ -44,47 +45,55 @@
         <div class="button upgrade" onclick="buyUpgrade('1')">
             <span id="upgrade1Effect">+1 x/s</span> <br>
             <span id="upgrade1Level">Level: 1</span> <br>
-            <span id="upgrade1Cost">Cost: 5x</span>
+            <span id="upgrade1Cost">Cost: 5x</span> <br>
+            <span id="upgrade1TotalEffect" style="color: orange;">+1 x/s</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('2')">
             <span id="upgrade2Effect">+12.5% x/s</span> <br>
             <span id="upgrade2Level">Level: 1</span> <br>
-            <span id="upgrade2Cost">Cost: 15x</span>
+            <span id="upgrade2Cost">Cost: 15x</span> <br>
+            <span id="upgrade2TotalEffect" style="color: orange;">+1 x/s</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('3')">
             <span id="upgrade3Effect">+20% to upgrade 1</span> <br>
             <span id="upgrade3Level">Level: 1</span> <br>
-            <span id="upgrade3Cost">Cost: 1kx</span>
+            <span id="upgrade3Cost">Cost: 1kx</span> <br>
+            <span id="upgrade3TotalEffect" style="color: orange;">+1 x/s</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('4')">
             <span id="upgrade4Effect">x/s rasied to 1.02</span> <br>
             <span id="upgrade4Level">Level: 1</span> <br>
-            <span id="upgrade4Cost">Cost: 2.5kx</span>
+            <span id="upgrade4Cost">Cost: 2.5kx</span> <br>
+            <span id="upgrade4TotalEffect" style="color: orange;">+1 x/s</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('5')">
             <span id="upgrade5Effect">Upgrade above becomes multiplicative</span> <br>
             <span id="upgrade5Level">Level: 1</span> <br>
-            <span id="upgrade5Cost">Cost: 10kx</span>
+            <span id="upgrade5Cost">Cost: 10kx</span> <br>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('6')">
             <span id="upgrade6Effect">Gain +0.2 extra EXP</span> <br>
             <span id="upgrade6Level">Level: 0</span> <br>
-            <span id="upgrade6Cost">Cost: 10kx</span>
+            <span id="upgrade6Cost">Cost: 10kx</span> <br>
+            <span id="upgrade6TotalEffect" style="color: orange;">+1 x/s</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('7')" style="display: none;">
             <span id="upgrade7Effect">TBD</span> <br>
             <span id="upgrade7Level">Level: 0</span> <br>
-            <span id="upgrade7Cost">Cost: 10kx</span>
+            <span id="upgrade7Cost">Cost: 10kx</span> <br>
+            <span id="upgrade7TotalEffect">+1 x/s</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('8')" style="display: none;">
             <span id="upgrade8Effect">TBD</span> <br>
             <span id="upgrade8Level">Level: 0</span> <br>
-            <span id="upgrade8Cost">Cost: 10kx</span>
+            <span id="upgrade8Cost">Cost: 10kx</span> <br>
+            <span id="upgrade8TotalEffect">+1 x/s</span>
         </div>
         <div class="button upgrade" onclick="buyUpgrade('9')" style="display: none;">
             <span id="upgrade9Effect">TBD</span> <br>
             <span id="upgrade9Level">Level: 0</span> <br>
-            <span id="upgrade9Cost">Cost: 10kx</span>
+            <span id="upgrade9Cost">Cost: 10kx</span> <br>
+            <span id="upgrade9TotalEffect">+1 x/s</span>
         </div>
     </div>
 
@@ -133,7 +142,7 @@
             <span id="yUpgrade4Cost">Cost: 5y</span>
             <span id="yUpgrade4Effect">x1.00 more x</span>
         </div>
-        <div class="button yUpgrade" onclick="buyYUpgrade('4')">
+        <div class="button yUpgrade" onclick="buyYUpgrade('5')">
             <span>Unlock 3 more upgrades</span>
             <span id="yUpgrade5Cost">Cost: 10y</span>
         </div>

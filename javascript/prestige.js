@@ -21,6 +21,8 @@ const prestige = (prestigeType) => {
             game['upgrade' + i].superChargedLevel = 0
         }
 
+        setUpgradeStats()
+
         game.xPerSecond = 0
         game.masteryLevel = 0
         game.masteryExp = 0
