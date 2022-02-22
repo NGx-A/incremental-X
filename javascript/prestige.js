@@ -70,7 +70,7 @@ const buyYUpgrade = (number) => {
         yUpgrade[5].cost *= 1.25
         game.superCharge++
     }
-    else if(!yUpgrade[number].bought) {
+    else if(!yUpgrade[number].bought && game.y >= yUpgrade[number].cost) {
         game.y -= yUpgrade[number].cost
         yUpgrade[number].bought = true
         document.querySelector("#yUpgrade" + number + "Cost").textContent = `Maxed`

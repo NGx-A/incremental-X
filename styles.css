@@ -27,24 +27,24 @@ body {
     display: flex;
     background-color: #222;
     width: 100vw;
-    height: 5vh;
+    height: 3em;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 2vh;
+    font-size: 1.6rem;
     font-weight: bold;
 }
 
 .currency {
-    margin-left: 1.5vw;
+    margin-left: 1.5em;
     text-shadow: 0 0 5px currentColor;
 }
 
 .currencyPerSec {
-    font-size: 1.2vh;
+    font-size: 0.6em;
     color: #999;
     position: relative;
-    bottom: 0.8vh;
+    bottom: 1em;
     font-style: italic;
 }
 
@@ -57,14 +57,14 @@ body {
 }
 
 .navBtn {
-    font-size: 1.7vh;
-    padding: 1.3vh;
+    font-size: 1.5em;
+    padding: 0.7em;
     background-color: #333;
-    border-radius: 0.3vh;
-    margin: 0.8vh;
+    border-radius: 0.3em;
+    margin: 0.4em;
     transition: 0.2s ease-in all;
     cursor: pointer;
-    min-width: 2vw;
+    min-width: 2em;
     text-align: center;
 }
 
@@ -79,33 +79,34 @@ body {
     place-content: center;
     background-color: #222;
     color: white;
-    margin: 1vh;
+    margin: 1em;
     text-align: center;
-    height: 10vh;
-    width: 8vw;
-    font-size: 1.3vh;
-    border-radius: 0.3vh;
+    font-size: 1rem;
+    height: 8em;
+    width: 14em;
+    padding: 1em;
+    border-radius: 0.4em;
     transition: 0.2s ease-in all;
     cursor: pointer;
-    line-height: 2vh;
+    line-height: 1.5em;
 }
 
 .masteryProgress {
     position: relative;
-    top: 6vh;
-    font-size: 1.3vh;
+    top: 4.5em;
+    font-size: 1.1rem;
 }
 
 .progressBar {
     position: relative;
-    width: 15vw;
+    width: 25em;
     height: 1.5vh;
     background-color: gray;
-    border-radius: 10vh;
-    top: 7vh;
+    border-radius: 10em;
+    top: 5.5em;
     text-align: center;
     color: black;
-    font-size: 1.3vh;
+    font-size: 1rem;
 }
 
 .progressBar::after {
@@ -117,20 +118,21 @@ body {
     height: 100%;
     background-color: aqua;
     box-shadow: 0 0 10px aqua;
-    border-radius: 10vh;
+    border-radius: 10em;
     transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .tab {
-    position: relative;
+    position: absolute;
     display: grid;
-    grid-template-columns: repeat(3, 10vw);
+    grid-template-columns: repeat(3, 15em);
     place-content: center;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: 50em;
+    width: 100vw;
     color: white;
-    top: 10vh;
+    top: 10em;
 }
 
 .prestige-container {
@@ -138,7 +140,7 @@ body {
     justify-content: center;
     position: absolute;
     width: 100vw;
-    top: 50vh;
+    top: 40em;
 }
 
 .button.prestige {
@@ -174,8 +176,8 @@ body {
     position: absolute;
     width: 100vw;
     text-align: center;
-    top: 5vh;
-    font-size: 1.4vh;
+    top: 10em;
+    font-size: 1.2rem;
 }
 
 .center {
