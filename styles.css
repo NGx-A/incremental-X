@@ -160,24 +160,22 @@ body {
     color: white;
 }
 
-#mastery {
-    flex-direction: column;
+.mastery {
+    color: black;
+    background-color: #fff;
+    transition: 0.15s ease-in all;
 }
 
-.mastery-container {
-    display: grid;
-    font-size: 1.5vh;
-    grid-template-columns: 1fr 1fr;
-    width: 25vw;
+.button.mastery:hover {
+    box-shadow: 0 0 25px #fff;
 }
 
-.masteryPerk-Level {
-    text-align: right;
-}
-
-.masteryPerk-Level,
-.masteryPerk {
-    margin: 1vh;
+#superCharges {
+    position: absolute;
+    width: 100vw;
+    text-align: center;
+    top: 5vh;
+    font-size: 1.4vh;
 }
 
 .center {

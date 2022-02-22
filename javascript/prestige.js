@@ -26,54 +26,61 @@ const prestige = (prestigeType) => {
         game.xPerSecond = 0
         game.masteryLevel = 0
         game.masteryExp = 0
-        game.masteryReq = 30
+        game.masteryReq = 100
         game.masteryMultiplier = 1
         game.masteryBonusExp = 0
-        game.perksUsed = 0
+        game.superCharge = yUpgrade[5].level
         gainMastery(0)
-
-        //Hide mastery divs
-        for(i = 0; i < 6; i++) {
-            document.querySelectorAll(".mastery-container")[i].style.display = "none"
-        }
     }
 }
 
 let yUpgrade = {
-    1: {
+    1: {                //Mastery
         cost: 1,
         bought: false
     },
-    2: {
+    2: {                //x2 upgrade 1
         cost: 1,
         bought: false
     },
-    3: {
-        cost: 3,
+    3: {                //x2 y gain
+        cost: 2,
         bought: false
     },
-    4: {
+    4: {                //boost x by y 
         cost: 5,
         bought: false,
         multiplier: 1
     },
-    5: {
-        cost: 5,
+    5: {                //start with super charges
+        cost: 10,
+        level: 0
+    },
+    6: {                //x2 EXP
+        cost: 10,
         bought: false
     }
 }
 
 //Y prestige related
 const buyYUpgrade = (number) => {
-    if(game.y >= yUpgrade[number].cost && !yUpgrade[number].bought) {
+    if(number == 5 && game.y >= yUpgrade[5].cost) {
+        yUpgrade[5].level++
+        game.y -= yUpgrade[5].cost
+        yUpgrade[5].cost *= 1.25
+        game.superCharge++
+    }
+    else if(!yUpgrade[number].bought) {
         game.y -= yUpgrade[number].cost
         yUpgrade[number].bought = true
         document.querySelector("#yUpgrade" + number + "Cost").textContent = `Maxed`
     }
     if(yUpgrade[4].bought) yUpgrade[4].multiplier = Math.sqrt(game.y + 1)
-    if(yUpgrade[5].bought) {
-        document.querySelectorAll(".upgrade")[6].style.display = "grid"
-        document.querySelectorAll(".upgrade")[7].style.display = "grid"
-        document.querySelectorAll(".upgrade")[8].style.display = "grid"
-    }
+    if(yUpgrade[1].baseCostScaling) document.querySelectorAll(".navBtn")[2].style.display = "inline"
 }
+
+//if(yUpgrade[7].bought) {
+//    document.querySelectorAll(".upgrade")[6].style.display = "grid"
+//    document.querySelectorAll(".upgrade")[7].style.display = "grid"
+//    document.querySelectorAll(".upgrade")[8].style.display = "grid"
+//}
