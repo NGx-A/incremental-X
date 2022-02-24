@@ -78,14 +78,25 @@ const loadGame = () => {
     if(typeof savedGame.upgrade6_BaseEffect !== "undefined") game.upgrade6.baseeffect = savedGame.upgrade6_BaseEffect
     if(typeof savedGame.upgrade6_SuperChargedLevel !== "undefined") game.upgrade6.superChargedLevel = savedGame.upgrade6_SuperChargedLevel
 
-    if(typeof savedGame.upgrade7_X !== "undefined") game.upgrade7.x = savedGame.upgrade7_X
+    if(typeof savedGame.upgrade7_baseCost !== "undefined") game.upgrade7.baseCost = savedGame.upgrade7_baseCost
+    if(typeof savedGame.upgrade7_Cost !== "undefined") game.upgrade7.cost = savedGame.upgrade7_Cost
+    if(typeof savedGame.upgrade7_Level !== "undefined") game.upgrade7.level = savedGame.upgrade7_Level
+    if(typeof savedGame.upgrade7_ExtraLevel !== "undefined") game.upgrade7.extraLevel = savedGame.upgrade7_ExtraLevel
+    if(typeof savedGame.upgrade7_CostScaling !== "undefined") game.upgrade7.costScaling = savedGame.upgrade7_CostScaling
     if(typeof savedGame.upgrade7_Effect !== "undefined") game.upgrade7.effect = savedGame.upgrade7_Effect
+    if(typeof savedGame.upgrade7_TotalEffect !== "undefined") game.upgrade7.totalEffect = savedGame.upgrade7_TotalEffect
+    if(typeof savedGame.upgrade7_BaseEffect !== "undefined") game.upgrade7.baseeffect = savedGame.upgrade7_BaseEffect
+    if(typeof savedGame.upgrade7_SuperChargedLevel !== "undefined") game.upgrade7.superChargedLevel = savedGame.upgrade7_SuperChargedLevel
 
-    if(typeof savedGame.upgrade8_X !== "undefined") game.upgrade8.x = savedGame.upgrade8_X
+    if(typeof savedGame.upgrade8_baseCost !== "undefined") game.upgrade8.baseCost = savedGame.upgrade8_baseCost
+    if(typeof savedGame.upgrade8_Cost !== "undefined") game.upgrade8.cost = savedGame.upgrade8_Cost
+    if(typeof savedGame.upgrade8_Level !== "undefined") game.upgrade8.level = savedGame.upgrade8_Level
+    if(typeof savedGame.upgrade8_ExtraLevel !== "undefined") game.upgrade8.extraLevel = savedGame.upgrade8_ExtraLevel
+    if(typeof savedGame.upgrade8_CostScaling !== "undefined") game.upgrade8.costScaling = savedGame.upgrade8_CostScaling
     if(typeof savedGame.upgrade8_Effect !== "undefined") game.upgrade8.effect = savedGame.upgrade8_Effect
-
-    if(typeof savedGame.upgrade9_X !== "undefined") game.upgrade9.x = savedGame.upgrade9_X
-    if(typeof savedGame.upgrade9_Effect !== "undefined") game.upgrade9.effect = savedGame.upgrade9_Effect
+    if(typeof savedGame.upgrade8_TotalEffect !== "undefined") game.upgrade8.totalEffect = savedGame.upgrade8_TotalEffect
+    if(typeof savedGame.upgrade8_BaseEffect !== "undefined") game.upgrade8.baseeffect = savedGame.upgrade8_BaseEffect
+    if(typeof savedGame.upgrade8_SuperChargedLevel !== "undefined") game.upgrade8.superChargedLevel = savedGame.upgrade8_SuperChargedLevel
    
     if(typeof savedGame.yUpgrade1_Cost !== "undefined") yUpgrade[1].cost = savedGame.yUpgrade1_Cost
     if(typeof savedGame.yUpgrade1_Bought !== "undefined") yUpgrade[1].bought = savedGame.yUpgrade1_Bought
@@ -97,9 +108,14 @@ const loadGame = () => {
     if(typeof savedGame.yUpgrade4_Bought !== "undefined") yUpgrade[4].bought = savedGame.yUpgrade4_Bought
     if(typeof savedGame.yUpgrade4_Multiplier !== "undefined") yUpgrade[4].multiplier = savedGame.yUpgrade4_Multiplier
     if(typeof savedGame.yUpgrade5_Cost !== "undefined") yUpgrade[5].cost = savedGame.yUpgrade5_Cost
-    if(typeof savedGame.yUpgrade5_Level !== "undefined") yUpgrade[5].level = savedGame.yUpgrade5_Level
+    if(typeof savedGame.yUpgrade5_Bought !== "undefined") yUpgrade[5].bought = savedGame.yUpgrade5_Bought
     if(typeof savedGame.yUpgrade6_Bought !== "undefined") yUpgrade[6].bought = savedGame.yUpgrade6_Bought
     if(typeof savedGame.yUpgrade6_Cost !== "undefined") yUpgrade[6].cost = savedGame.yUpgrade6_Cost
+    if(typeof savedGame.yUpgrade7_Bought !== "undefined") yUpgrade[7].bought = savedGame.yUpgrade7_Bought
+    if(typeof savedGame.yUpgrade7_Cost !== "undefined") yUpgrade[7].cost = savedGame.yUpgrade7_Cost
+    
+
+    if(typeof savedGame.prevX !== "undefined") prevX = savedGame.prevX
     
     //Settings
     if(typeof savedGame.offlineProduction !== "undefined") setting.offlineProduction = savedGame.offlineProduction
@@ -182,14 +198,26 @@ const saveGame = () => {
     upgrade6_TotalEffect: game.upgrade6.totalEffect,
     upgrade6_SuperChargedLevel: game.upgrade6.superChargedLevel,
 
-    upgrade7_X: game.upgrade7.x,
+    upgrade7_baseCost: game.upgrade7.baseCost,
+    upgrade7_Cost: game.upgrade7.cost,
+    upgrade7_Level: game.upgrade7.level,
+    upgrade7_ExtraLevel: game.upgrade7.extraLevel,
+    upgrade7_CostScaling: game.upgrade7.costScaling,
     upgrade7_Effect: game.upgrade7.effect,
+    upgrade7_BaseEffect: game.upgrade7.baseEffect,
+    upgrade7_TotalEffect: game.upgrade7.totalEffect,
+    upgrade7_SuperChargedLevel: game.upgrade7.superChargedLevel,
 
-    upgrade8_X: game.upgrade8.x,
+    upgrade8_baseCost: game.upgrade8.baseCost,
+    upgrade8_Cost: game.upgrade8.cost,
+    upgrade8_Level: game.upgrade8.level,
+    upgrade8_ExtraLevel: game.upgrade8.extraLevel,
+    upgrade8_CostScaling: game.upgrade8.costScaling,
     upgrade8_Effect: game.upgrade8.effect,
+    upgrade8_BaseEffect: game.upgrade8.baseEffect,
+    upgrade8_TotalEffect: game.upgrade8.totalEffect,
+    upgrade8_SuperChargedLevel: game.upgrade8.superChargedLevel,
 
-    upgrade9_X: game.upgrade9.x,
-    upgrade9_Effect: game.upgrade9.effect,
 
     //Y upgrades
     yUpgrade1_Cost: yUpgrade[1].cost,
@@ -202,10 +230,13 @@ const saveGame = () => {
     yUpgrade4_Bought: yUpgrade[4].bought,
     yUpgrade4_Multiplier: yUpgrade[4].multiplier,
     yUpgrade5_Cost: yUpgrade[5].cost,
-    yUpgrade5_Level: yUpgrade[5].level,
+    yUpgrade5_Bought: yUpgrade[5].bought,
     yUpgrade6_Cost: yUpgrade[6].cost,
     yUpgrade6_Bought: yUpgrade[6].bought,
+    yUpgrade7_Cost: yUpgrade[7].cost,
+    yUpgrade7_Bought: yUpgrade[7].bought,
 
+    prevX: prevX,
 
     //Settings
     offlineProduction: setting.offlineProduction,
@@ -224,13 +255,17 @@ window.onload = function() {
         document.querySelectorAll(".navBtn")[3].style.display = "block"
     }
 
-    for(i = 0; i < 5; i++) {
-        if(yUpgrade[i + 1].bought) document.querySelector("#yUpgrade" + (i + 1) + "Cost").textContent = `Maxed`
+    for(i = 1; i <= 7; i++) {
+        if(yUpgrade[i].bought) document.querySelector("#yUpgrade" + i + "Cost").textContent = `Maxed`
     }
-    if(yUpgrade[5].bought) {
+
+    if(yUpgrade[7].bought) {
         document.querySelectorAll(".upgrade")[6].style.display = "grid"
         document.querySelectorAll(".upgrade")[7].style.display = "grid"
-        document.querySelectorAll(".upgrade")[8].style.display = "grid"
+        //document.querySelectorAll(".upgrade")[8].style.display = "grid"
+        document.querySelectorAll(".mastery")[7].style.display = "grid"
+        document.querySelectorAll(".mastery")[8].style.display = "grid"
+        //document.querySelectorAll(".mastery")[9].style.display = "grid"
     }
     
     document.querySelector(`#${game.currentTab}`).style.display = "grid"
@@ -238,8 +273,7 @@ window.onload = function() {
     timeOffline = (Date.now() - lastDate) / 1000
     if(setting.offlineProduction) game.x += game.xPerSecond * timeOffline
 
-    gainMastery(0)
-       
+    gainMastery(0)  
 }
 
 window.onunload = function() {

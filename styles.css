@@ -11,9 +11,10 @@
 
 body {
     margin: 0;
-    background-color: #030303;
     font-family: 'Rubik', sans-serif;
     user-select: none;
+    background-color:black;
+    height: 100vh;
 }
 
 .version {
@@ -25,7 +26,6 @@ body {
 
 .currency-container {
     display: flex;
-    background-color: #222;
     width: 100vw;
     height: 3em;
     justify-content: center;
@@ -33,6 +33,7 @@ body {
     color: white;
     font-size: 1.6rem;
     font-weight: bold;
+    background-color: #222;
 }
 
 .currency {
@@ -68,10 +69,8 @@ body {
     text-align: center;
 }
 
-.button:hover,
 .navBtn:hover {
-    background-color: white;
-    color: black;
+    border-radius: 0;
 }
 
 .button {
@@ -82,13 +81,17 @@ body {
     margin: 1em;
     text-align: center;
     font-size: 1rem;
-    height: 8em;
+    height: 10em;
     width: 14em;
     padding: 1em;
-    border-radius: 0.4em;
+    border-radius: 0.4em 0.4em 0 0;
+    border-bottom: 0.5em solid white;
     transition: 0.2s ease-in all;
     cursor: pointer;
-    line-height: 1.5em;
+}
+
+.button:hover {
+    border-bottom: grey 0.5em solid;
 }
 
 .masteryProgress {
@@ -100,24 +103,26 @@ body {
 .progressBar {
     position: relative;
     width: 25em;
-    height: 1.5vh;
-    background-color: gray;
+    height: 1em;
+    background-color: white;
     border-radius: 10em;
     top: 5.5em;
-    text-align: center;
-    color: black;
+    color: white;
     font-size: 1rem;
 }
 
 .progressBar::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     content: var(--progressBarText);
     position: absolute;
     left: 0;
     min-width: 5%;
     width: var(--progressBarWidth);
     height: 100%;
-    background-color: aqua;
-    box-shadow: 0 0 10px aqua;
+    background: linear-gradient(30deg, aqua, rgb(255, 0, 255));
+    box-shadow: 0 0 10px white;
     border-radius: 10em;
     transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
@@ -129,10 +134,9 @@ body {
     place-content: center;
     justify-content: center;
     align-items: center;
-    height: 50em;
     width: 100vw;
     color: white;
-    top: 10em;
+    top: 23em;
 }
 
 .prestige-container {
@@ -144,12 +148,7 @@ body {
 }
 
 .button.prestige {
-    background-color: rgba(255, 0, 0, 0.5);
-}
-
-.button.prestige:hover {
-    background-color: rgb(255, 166, 0);
-    color: white;
+    background-color: rgb(255, 0, 0);
 }
 
 .button.yUpgrade {
@@ -157,26 +156,18 @@ body {
     text-shadow: 0 0 5px currentColor;
 }
 
-.button.yUpgrade:hover {
-    background-color: rgb(255, 0, 0);
-    color: white;
-}
-
 .mastery {
     color: black;
     background-color: #fff;
-    transition: 0.15s ease-in all;
-}
-
-.button.mastery:hover {
-    box-shadow: 0 0 25px #fff;
+    border-bottom: 0.5em solid red;
+    transition: 0.2s ease-in all;
 }
 
 #superCharges {
     position: absolute;
     width: 100vw;
     text-align: center;
-    top: 10em;
+    top: -2em;
     font-size: 1.2rem;
 }
 
