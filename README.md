@@ -1,1 +1,1 @@
-# https://ngx-a.github.io/incremental-X./
+# https://ngx-a.github.io/incremental-X/
