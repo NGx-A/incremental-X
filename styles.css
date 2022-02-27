@@ -15,10 +15,12 @@ body {
     user-select: none;
     background-color:black;
     height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 .version {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     color: white;
@@ -58,8 +60,8 @@ body {
 }
 
 .navBtn {
-    font-size: 1.5em;
-    padding: 0.7em;
+    font-size: 1.5rem;
+    padding: 0.55em;
     background-color: #333;
     border-radius: 0.3em;
     margin: 0.4em;
@@ -96,7 +98,7 @@ body {
 
 .masteryProgress {
     position: relative;
-    top: 4.5em;
+    top: 6em;
     font-size: 1.1rem;
 }
 
@@ -106,7 +108,7 @@ body {
     height: 1em;
     background-color: white;
     border-radius: 10em;
-    top: 5.5em;
+    top: 8em;
     color: white;
     font-size: 1rem;
 }
@@ -121,7 +123,7 @@ body {
     min-width: 5%;
     width: var(--progressBarWidth);
     height: 100%;
-    background: linear-gradient(30deg, aqua, rgb(255, 0, 255));
+    background: linear-gradient(30deg, aqua, magenta);
     box-shadow: 0 0 10px white;
     border-radius: 10em;
     transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -144,7 +146,7 @@ body {
     justify-content: center;
     position: absolute;
     width: 100vw;
-    top: 40em;
+    top: 65em;
 }
 
 .button.prestige {
@@ -156,11 +158,74 @@ body {
     text-shadow: 0 0 5px currentColor;
 }
 
+
+.yPrimary-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 15em);
+    place-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    color: white;
+    top: 0;
+}
+
+.yUpgrade {
+    z-index: 3;
+}
+
+.ySecondary-container {
+    position: relative;
+    right: 20em;
+    display: grid;
+    grid-template-columns: repeat(2, 68em);
+    bottom: 5em;
+    z-index: 1;
+}
+
+.ySecondary {
+    background: radial-gradient(circle at 100%, red, orange);
+    display: grid;
+    place-content: center;
+    width: 10em;
+    height: 10em;
+    border-radius: 10em;
+    margin: 2em;
+    text-align: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.ySecondary:hover {
+    filter: hue-rotate(20deg);
+}
+
+.ySecondaryEffect {
+    color: aqua; 
+    text-shadow: 0 0 5px currentColor;
+}
+
 .mastery {
-    color: black;
-    background-color: #fff;
-    border-bottom: 0.5em solid red;
+    color: white;
+    background: linear-gradient(300deg, aqua, magenta);
+    border-bottom: 0.5em solid white;
     transition: 0.2s ease-in all;
+}
+
+.masteryEffect {
+    color: red;
+    text-shadow: 0 0 1em currentColor;
+}
+
+.mastery.navBtn {
+    position: absolute;
+    top: 6em;
+}
+
+.mastery:hover {
+    filter: hue-rotate(30deg);
 }
 
 #superCharges {

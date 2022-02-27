@@ -19,11 +19,11 @@
     <div class="navBar">
         <div class="navBtn" onclick="openTab('settings')">Settings</div>
         <div class="navBtn" onclick="openTab('main')">Main</div>
-        <div class="navBtn mastery" onclick="openTab('mastery')" style="color: red; display: none; border: 0;">Mastery</div>
         <div class="navBtn" onclick="openTab('y')" style="color: orange; text-shadow: 0 0 5px currentColor; display: none;">y</div>
+        <div class="navBtn mastery" onclick="openTab('mastery')" style="display: none; border: 0;">Mastery</div>
     </div>
 
-    <div class="center">
+    <div class="center" style="display: none;">
         <div class="masteryProgress" style="color: white;">0 / 50</div>
         <div class="progressBar"></div>
     </div>
@@ -33,14 +33,14 @@
         <div class="button" id="offProd" onclick="changeSetting('offlineProduction')">Offline production: ON</div>
     </div>
 
-    <div class="tab" id="main" style="display: none;">
-        <div class="prestige-container">
-            <div class="button prestige" onclick="prestige('y')" style="display: none;">
-                <span>Y prestige</span> <br>
-                <span id="yPrestigeGain">Gain +1y</span>
-            </div>
+    <div class="prestige-container">
+        <div class="button prestige" onclick="prestige()" style="display: none;">
+            <span>Y prestige</span> <br>
+            <span id="yPrestigeGain">Gain +1y</span>
         </div>
+    </div>
 
+    <div class="tab" id="main" style="display: none;">
         <div class="button upgrade" onclick="buyUpgrade('1')">
             <span class="upgradeEffect">+1 x/s</span> <br>
             <span class="upgradeLevel">Level: 1</span> <br>
@@ -71,7 +71,7 @@
             <span class="upgradeCost">Cost: 10kx</span> <br>
             <span class="upgradeTotalEffect" style="color: orange;">+1 x/s</span>
         </div>
-        <div class="button upgrade" onclick="buyUpgrade('6')">
+        <div class="button upgrade" onclick="buyUpgrade('6')" style="display: none;">
             <span class="upgradeEffect">Gain +0.2 extra EXP</span> <br>
             <span class="upgradeLevel">Level: 0</span> <br>
             <span class="upgradeCost">Cost: 10kx</span> <br>
@@ -89,6 +89,12 @@
             <span class="upgradeCost">Cost: 1Mx</span> <br>
             <span class="upgradeTotalEffect" style="color: orange;">-1%</span>
         </div>
+        <div class="button upgrade" onclick="buyUpgrade('9')" style="display: none;">
+            <span class="upgradeEffect">All upgrades +1%</span> <br>
+            <span class="upgradeLevel">Level: 0</span> <br>
+            <span class="upgradeCost">Cost: 1Mx</span> <br>
+            <span class="upgradeTotalEffect" style="color: orange;">-1%</span>
+        </div>
     </div>
 
     <div class="tab" id="mastery" style="display: none;">
@@ -96,86 +102,137 @@
         <div class="button mastery" onclick="superCharge('1')">
             <span>Super Charge upgrade 1</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('2')">
             <span>Super Charge upgrade 2</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('3')">
             <span>Super Charge upgrade 3</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('4')">
             <span>Super Charge upgrade 4</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('5')">
             <span>Super Charge upgrade 5</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('6')">
             <span>Super Charge upgrade 6</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('7')" style="display: none;">
             <span>Super Charge upgrade 7</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('8')" style="display: none;">
             <span>Super Charge upgrade 8</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
         <div class="button mastery" onclick="superCharge('9')" style="display: none;">
             <span>Super Charge upgrade 9</span> <br>
             <span class="masteryLevel">Level: 0</span> <br>
-            <span class="masteryEffect" style="color: red;">+0</span>
+            <span class="masteryEffect">+0</span>
         </div>
     </div>
 
     <div class="tab" id="y" style="display: none;">
-        <div class="button yUpgrade" onclick="buyYUpgrade('1')">
-            <span>Unlock mastery</span>
-            <span id="yUpgrade1Cost">Cost: 1y</span>
+        <div class="ySecondary-container">
+            <div class="ySecondary-left" style="display: none;">
+                <div class="ySecondary" onclick="buyYSecondary('1')">
+                    <span class="ySecondaryLevel">Level: 0</span>
+                    <span class="ySecondaryCost">Cost: 1</span>
+                    <span class="ySecondaryEffect">+1 upgrade level</span>
+                </div>
+                <div class="ySecondary" onclick="buyYSecondary('2')">
+                    <span class="ySecondaryLevel">Level: 0</span>
+                    <span class="ySecondaryCost">Cost: 1</span>
+                    <span class="ySecondaryEffect">x1.0 upgrade level</span>
+                </div>
+                <div class="ySecondary" onclick="buyYSecondary('3')">
+                    <span class="ySecondaryLevel">Level: 0</span>
+                    <span class="ySecondaryCost">Cost: 1</span>
+                    <span class="ySecondaryEffect">-1 base cost</span>
+                </div>
+            </div>
+            <div class="ySecondary-right" style="display: none;">
+                <div class="ySecondary" onclick="buyYSecondary('4')">
+                    <span class="ySecondaryLevel">Level: 0</span>
+                    <span class="ySecondaryCost">Cost: 1</span>
+                    <span class="ySecondaryEffect">+30% EXP</span>
+                </div>
+                <div class="ySecondary" onclick="buyYSecondary('5')">
+                    <span class="ySecondaryLevel">Level: 0</span>
+                    <span class="ySecondaryCost">Cost: 1</span>
+                    <span class="ySecondaryEffect">TBD</span>
+                </div>
+                <div class="ySecondary" onclick="buyYSecondary('6')">
+                    <span class="ySecondaryLevel">Level: 0</span>
+                    <span class="ySecondaryCost">Cost: 1</span>
+                    <span class="ySecondaryEffect">Mastery base -3%</span>
+                </div>
+            </div>
         </div>
-        <div class="button yUpgrade" onclick="buyYUpgrade('2')">
-            <span>x2 to upgrade 1</span>
-            <span id="yUpgrade2Cost">Cost: 1y</span>
+        
+
+        <div class="yPrimary-container">
+            <div class="button yUpgrade" onclick="buyYUpgrade('1')">
+                <span>Unlock mastery</span>
+                <span id="yUpgrade1Cost">Cost: 1y</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('2')">
+                <span>x2 to upgrade 1</span>
+                <span id="yUpgrade2Cost">Cost: 1y</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('3')">
+                <span>x2 y gain</span>
+                <span id="yUpgrade3Cost">Cost: 2y</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('4')">
+                <span>Boost x gain by unspent y</span>
+                <span id="yUpgrade4Cost">Cost: 5y</span>
+                <span id="yUpgrade4Effect">x1.00</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('5')">
+                <span>Start with a super charge</span>
+                <span id="yUpgrade5Cost">Cost: 10y</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('6')">
+                <span>x2 EXP gain</span>
+                <span id="yUpgrade6Cost">Cost: 10y</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('7')">
+                <span>Unlock 3 more upgrades</span>
+                <span id="yUpgrade7Cost">Cost: 15y</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('8')">
+                <span>Autobuy upgrades</span>
+                <span id="yUpgrade8Cost">Cost: 30y</span>
+            </div>
+            <div class="button yUpgrade" onclick="buyYUpgrade('9')">
+                <span>Boost y gain by unspent super charges</span>
+                <span id="yUpgrade9Cost">Cost: 50y</span>
+                <span id="yUpgrade9Effect">x1.00 </span>
+            </div>
         </div>
-        <div class="button yUpgrade" onclick="buyYUpgrade('3')">
-            <span>x2 y gain</span>
-            <span id="yUpgrade3Cost">Cost: 2y</span>
-        </div>
-        <div class="button yUpgrade" onclick="buyYUpgrade('4')">
-            <span>Boost x gain by unspent y</span>
-            <span id="yUpgrade4Cost">Cost: 5y</span>
-            <span id="yUpgrade4Effect">x1.00 more x</span>
-        </div>
-        <div class="button yUpgrade" onclick="buyYUpgrade('5')">
-            <span>Start with a super charge</span>
-            <span id="yUpgrade5Cost">Cost: 10y</span>
-        </div>
-        <div class="button yUpgrade" onclick="buyYUpgrade('6')">
-            <span>x2 EXP gain</span>
-            <span id="yUpgrade6Cost">Cost: 10y</span>
-        </div>
-        <div class="button yUpgrade" onclick="buyYUpgrade('7')">
-            <span>Unlock 3 more upgrades</span>
-            <span id="yUpgrade7Cost">Cost: 15y</span>
-        </div>
+        
     </div>
 </body>
 <script src="javascript/game.js"></script>
 <script src="javascript/UI.js"></script>
-<script src="javascript/prestige.js"></script>
 <script src="javascript/settings.js"></script>
 <script src="javascript/format.js"></script>
 <script src="javascript/save.js"></script>
+
+<script src="javascript/prestige/y.js"></script>
 </html>

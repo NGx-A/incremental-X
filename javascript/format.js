@@ -1,4 +1,4 @@
-let letters = ["K", "M", "B", "T", "Q", "QU", "SX", "SP"]
+let letters = ["K", "M", "B", "T", "Q", "QU", "SX", "SP", "OC", "NO"]
 
 let notation = 3
 
@@ -31,7 +31,7 @@ if (notation == 2) {
 //Mixed scientific
 if (notation == 3) {
     format = (amount, decimals) => {
-        if(amount < 1e15) {
+        if(amount < 1e30) {
             let power = Math.floor(Math.log10(amount))
             let mantissa = amount / Math.pow(1000, Math.floor(power / 3))
             let letter = Math.floor(power / 3)

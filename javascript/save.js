@@ -97,24 +97,60 @@ const loadGame = () => {
     if(typeof savedGame.upgrade8_TotalEffect !== "undefined") game.upgrade8.totalEffect = savedGame.upgrade8_TotalEffect
     if(typeof savedGame.upgrade8_BaseEffect !== "undefined") game.upgrade8.baseeffect = savedGame.upgrade8_BaseEffect
     if(typeof savedGame.upgrade8_SuperChargedLevel !== "undefined") game.upgrade8.superChargedLevel = savedGame.upgrade8_SuperChargedLevel
-   
-    if(typeof savedGame.yUpgrade1_Cost !== "undefined") yUpgrade[1].cost = savedGame.yUpgrade1_Cost
-    if(typeof savedGame.yUpgrade1_Bought !== "undefined") yUpgrade[1].bought = savedGame.yUpgrade1_Bought
-    if(typeof savedGame.yUpgrade2_Cost !== "undefined") yUpgrade[2].cost = savedGame.yUpgrade2_Cost
-    if(typeof savedGame.yUpgrade2_Bought !== "undefined") yUpgrade[2].bought = savedGame.yUpgrade2_Bought
-    if(typeof savedGame.yUpgrade3_Cost !== "undefined") yUpgrade[3].cost = savedGame.yUpgrade3_Cost
-    if(typeof savedGame.yUpgrade3_Bought !== "undefined") yUpgrade[3].bought = savedGame.yUpgrade3_Bought
-    if(typeof savedGame.yUpgrade4_Cost !== "undefined") yUpgrade[4].cost = savedGame.yUpgrade4_Cost
-    if(typeof savedGame.yUpgrade4_Bought !== "undefined") yUpgrade[4].bought = savedGame.yUpgrade4_Bought
-    if(typeof savedGame.yUpgrade4_Multiplier !== "undefined") yUpgrade[4].multiplier = savedGame.yUpgrade4_Multiplier
-    if(typeof savedGame.yUpgrade5_Cost !== "undefined") yUpgrade[5].cost = savedGame.yUpgrade5_Cost
-    if(typeof savedGame.yUpgrade5_Bought !== "undefined") yUpgrade[5].bought = savedGame.yUpgrade5_Bought
-    if(typeof savedGame.yUpgrade6_Bought !== "undefined") yUpgrade[6].bought = savedGame.yUpgrade6_Bought
-    if(typeof savedGame.yUpgrade6_Cost !== "undefined") yUpgrade[6].cost = savedGame.yUpgrade6_Cost
-    if(typeof savedGame.yUpgrade7_Bought !== "undefined") yUpgrade[7].bought = savedGame.yUpgrade7_Bought
-    if(typeof savedGame.yUpgrade7_Cost !== "undefined") yUpgrade[7].cost = savedGame.yUpgrade7_Cost
-    
 
+    if(typeof savedGame.upgrade9_baseCost !== "undefined") game.upgrade9.baseCost = savedGame.upgrade9_baseCost
+    if(typeof savedGame.upgrade9_Cost !== "undefined") game.upgrade9.cost = savedGame.upgrade9_Cost
+    if(typeof savedGame.upgrade9_Level !== "undefined") game.upgrade9.level = savedGame.upgrade9_Level
+    if(typeof savedGame.upgrade9_ExtraLevel !== "undefined") game.upgrade9.extraLevel = savedGame.upgrade9_ExtraLevel
+    if(typeof savedGame.upgrade9_CostScaling !== "undefined") game.upgrade9.costScaling = savedGame.upgrade9_CostScaling
+    if(typeof savedGame.upgrade9_Effect !== "undefined") game.upgrade9.effect = savedGame.upgrade9_Effect
+    if(typeof savedGame.upgrade9_TotalEffect !== "undefined") game.upgrade9.totalEffect = savedGame.upgrade9_TotalEffect
+    if(typeof savedGame.upgrade9_BaseEffect !== "undefined") game.upgrade9.baseeffect = savedGame.upgrade9_BaseEffect
+    if(typeof savedGame.upgrade9_SuperChargedLevel !== "undefined") game.upgrade9.superChargedLevel = savedGame.upgrade9_SuperChargedLevel
+   
+    if(typeof savedGame.yUpgradePrimary1_Cost !== "undefined") yUpgrade.primary[1].cost = savedGame.yUpgradePrimary1_Cost
+    if(typeof savedGame.yUpgradePrimary1_Bought !== "undefined") yUpgrade.primary[1].bought = savedGame.yUpgradePrimary1_Bought
+
+    if(typeof savedGame.yUpgradePrimary2_Cost !== "undefined") yUpgrade.primary[2].cost = savedGame.yUpgradePrimary2_Cost
+    if(typeof savedGame.yUpgradePrimary2_Bought !== "undefined") yUpgrade.primary[2].bought = savedGame.yUpgradePrimary2_Bought
+
+    if(typeof savedGame.yUpgradePrimary3_Cost !== "undefined") yUpgrade.primary[3].cost = savedGame.yUpgradePrimary3_Cost
+    if(typeof savedGame.yUpgradePrimary3_Bought !== "undefined") yUpgrade.primary[3].bought = savedGame.yUpgradePrimary3_Bought
+
+    if(typeof savedGame.yUpgradePrimary4_Cost !== "undefined") yUpgrade.primary[4].cost = savedGame.yUpgradePrimary4_Cost
+    if(typeof savedGame.yUpgradePrimary4_Bought !== "undefined") yUpgrade.primary[4].bought = savedGame.yUpgradePrimary4_Bought
+    if(typeof savedGame.yUpgradePrimary4_Multiplier !== "undefined") yUpgrade.primary[4].multiplier = savedGame.yUpgradePrimary4_Multiplier
+
+    if(typeof savedGame.yUpgradePrimary5_Cost !== "undefined") yUpgrade.primary[5].cost = savedGame.yUpgradePrimary5_Cost
+    if(typeof savedGame.yUpgradePrimary5_Bought !== "undefined") yUpgrade.primary[5].bought = savedGame.yUpgradePrimary5_Bought
+
+    if(typeof savedGame.yUpgradePrimary6_Cost !== "undefined") yUpgrade.primary[6].cost = savedGame.yUpgradePrimary6_Cost
+    if(typeof savedGame.yUpgradePrimary6_Bought !== "undefined") yUpgrade.primary[6].bought = savedGame.yUpgradePrimary6_Bought
+
+    if(typeof savedGame.yUpgradePrimary7_Bought !== "undefined") yUpgrade.primary[7].bought = savedGame.yUpgradePrimary7_Bought
+    if(typeof savedGame.yUpgradePrimary7_Cost !== "undefined") yUpgrade.primary[7].cost = savedGame.yUpgradePrimary7_Cost
+
+    if(typeof savedGame.yUpgradePrimary8_Bought !== "undefined") yUpgrade.primary[8].bought = savedGame.yUpgradePrimary8_Bought
+    if(typeof savedGame.yUpgradePrimary8_Cost !== "undefined") yUpgrade.primary[8].cost = savedGame.yUpgradePrimary8_Cost
+    if(typeof savedGame.yUpgradePrimary8_Enabled !== "undefined") yUpgrade.primary[8].enabled = savedGame.yUpgradePrimary8_Enabled
+
+    if(typeof savedGame.yUpgradePrimary9_Bought !== "undefined") yUpgrade.primary[9].bought = savedGame.yUpgradePrimary9_Bought
+    if(typeof savedGame.yUpgradePrimary9_Cost !== "undefined") yUpgrade.primary[9].cost = savedGame.yUpgradePrimary9_Cost
+    if(typeof savedGame.yUpgradePrimary9_Multiplier !== "undefined") yUpgrade.primary[9].multiplier = savedGame.yUpgradePrimary9_Multiplier
+
+    if(typeof savedGame.yUpgradeSecondary1_Level !== "undefined") yUpgrade.secondary[1].level = savedGame.yUpgradeSecondary1_Level
+    if(typeof savedGame.yUpgradeSecondary1_Max !== "undefined") yUpgrade.secondary[1].max = savedGame.yUpgradeSecondary1_Max
+    if(typeof savedGame.yUpgradeSecondary2_Level !== "undefined") yUpgrade.secondary[2].level = savedGame.yUpgradeSecondary2_Level
+    if(typeof savedGame.yUpgradeSecondary2_Max !== "undefined") yUpgrade.secondary[2].max = savedGame.yUpgradeSecondary2_Max
+    if(typeof savedGame.yUpgradeSecondary3_Level !== "undefined") yUpgrade.secondary[3].level = savedGame.yUpgradeSecondary3_Level
+    if(typeof savedGame.yUpgradeSecondary3_Max !== "undefined") yUpgrade.secondary[3].max = savedGame.yUpgradeSecondary3_Max
+    if(typeof savedGame.yUpgradeSecondary4_Level !== "undefined") yUpgrade.secondary[4].level = savedGame.yUpgradeSecondary4_Level
+    if(typeof savedGame.yUpgradeSecondary4_Max !== "undefined") yUpgrade.secondary[4].max = savedGame.yUpgradeSecondary4_Max
+    if(typeof savedGame.yUpgradeSecondary5_Level !== "undefined") yUpgrade.secondary[5].level = savedGame.yUpgradeSecondary5_Level
+    if(typeof savedGame.yUpgradeSecondary5_Max !== "undefined") yUpgrade.secondary[5].max = savedGame.yUpgradeSecondary5_Max
+    if(typeof savedGame.yUpgradeSecondary6_Level !== "undefined") yUpgrade.secondary[6].level = savedGame.yUpgradeSecondary6_Level
+    if(typeof savedGame.yUpgradeSecondary6_Max !== "undefined") yUpgrade.secondary[6].max = savedGame.yUpgradeSecondary6_Max
+    
     if(typeof savedGame.prevX !== "undefined") prevX = savedGame.prevX
     
     //Settings
@@ -218,23 +254,60 @@ const saveGame = () => {
     upgrade8_TotalEffect: game.upgrade8.totalEffect,
     upgrade8_SuperChargedLevel: game.upgrade8.superChargedLevel,
 
+    upgrade9_baseCost: game.upgrade9.baseCost,
+    upgrade9_Cost: game.upgrade9.cost,
+    upgrade9_Level: game.upgrade9.level,
+    upgrade9_ExtraLevel: game.upgrade9.extraLevel,
+    upgrade9_CostScaling: game.upgrade9.costScaling,
+    upgrade9_Effect: game.upgrade9.effect,
+    upgrade9_BaseEffect: game.upgrade9.baseEffect,
+    upgrade9_TotalEffect: game.upgrade9.totalEffect,
+    upgrade9_SuperChargedLevel: game.upgrade9.superChargedLevel,
+
 
     //Y upgrades
-    yUpgrade1_Cost: yUpgrade[1].cost,
-    yUpgrade1_Bought: yUpgrade[1].bought,
-    yUpgrade2_Cost: yUpgrade[2].cost,
-    yUpgrade2_Bought: yUpgrade[2].bought,
-    yUpgrade3_Cost: yUpgrade[3].cost,
-    yUpgrade3_Bought: yUpgrade[3].bought,
-    yUpgrade4_Cost: yUpgrade[4].cost,
-    yUpgrade4_Bought: yUpgrade[4].bought,
-    yUpgrade4_Multiplier: yUpgrade[4].multiplier,
-    yUpgrade5_Cost: yUpgrade[5].cost,
-    yUpgrade5_Bought: yUpgrade[5].bought,
-    yUpgrade6_Cost: yUpgrade[6].cost,
-    yUpgrade6_Bought: yUpgrade[6].bought,
-    yUpgrade7_Cost: yUpgrade[7].cost,
-    yUpgrade7_Bought: yUpgrade[7].bought,
+    yUpgradePrimary1_Cost: yUpgrade.primary[1].cost,
+    yUpgradePrimary1_Bought: yUpgrade.primary[1].bought,
+
+    yUpgradePrimary2_Cost: yUpgrade.primary[2].cost,
+    yUpgradePrimary2_Bought: yUpgrade.primary[2].bought,
+
+    yUpgradePrimary3_Cost: yUpgrade.primary[3].cost,
+    yUpgradePrimary3_Bought: yUpgrade.primary[3].bought,
+
+    yUpgradePrimary4_Cost: yUpgrade.primary[4].cost,
+    yUpgradePrimary4_Bought: yUpgrade.primary[4].bought,
+    yUpgradePrimary4_Multiplier: yUpgrade.primary[4].multiplier,
+
+    yUpgradePrimary5_Cost: yUpgrade.primary[5].cost,
+    yUpgradePrimary5_Bought: yUpgrade.primary[5].bought,
+
+    yUpgradePrimary6_Cost: yUpgrade.primary[6].cost,
+    yUpgradePrimary6_Bought: yUpgrade.primary[6].bought,
+
+    yUpgradePrimary7_Cost: yUpgrade.primary[7].cost,
+    yUpgradePrimary7_Bought: yUpgrade.primary[7].bought,
+
+    yUpgradePrimary8_Cost: yUpgrade.primary[8].cost,
+    yUpgradePrimary8_Bought: yUpgrade.primary[8].bought,
+    yUpgradePrimary8_Enabled: yUpgrade.primary[8].enabled,
+
+    yUpgradePrimary9_Cost: yUpgrade.primary[9].cost,
+    yUpgradePrimary9_Bought: yUpgrade.primary[9].bought,
+    yUpgradePrimary9_Multiplier: yUpgrade.primary[9].multiplier,
+
+    yUpgradeSecondary1_Level: yUpgrade.secondary[1].level,
+    yUpgradeSecondary1_Max: yUpgrade.secondary[1].max,
+    yUpgradeSecondary2_Level: yUpgrade.secondary[2].level,
+    yUpgradeSecondary2_Max: yUpgrade.secondary[2].max,
+    yUpgradeSecondary3_Level: yUpgrade.secondary[3].level,
+    yUpgradeSecondary3_Max: yUpgrade.secondary[3].max,
+    yUpgradeSecondary4_Level: yUpgrade.secondary[4].level,
+    yUpgradeSecondary4_Max: yUpgrade.secondary[4].max,
+    yUpgradeSecondary5_Level: yUpgrade.secondary[5].level,
+    yUpgradeSecondary5_Max: yUpgrade.secondary[5].max,
+    yUpgradeSecondary6_Level: yUpgrade.secondary[6].level,
+    yUpgradeSecondary6_Max: yUpgrade.secondary[6].max,
 
     prevX: prevX,
 
@@ -249,24 +322,31 @@ window.onload = function() {
     updateUI()
     updateSettingsUI()
 
-    if(yUpgrade[1].bought) document.querySelectorAll(".navBtn")[2].style.display = "inline"
+    if(yUpgrade.primary[1].bought) document.querySelectorAll(".navBtn")[3].style.display = "inline"
     if(game.totalY >= 1) {
         document.querySelector(".y").style.display = "inline"
-        document.querySelectorAll(".navBtn")[3].style.display = "block"
+        document.querySelectorAll(".navBtn")[2].style.display = "block"
     }
 
-    for(i = 1; i <= 7; i++) {
-        if(yUpgrade[i].bought) document.querySelector("#yUpgrade" + i + "Cost").textContent = `Maxed`
+    for(i = 1; i <= 9; i++) {
+        if(yUpgrade.primary[i].bought) document.querySelector("#yUpgrade" + i + "Cost").textContent = `Max`
     }
 
-    if(yUpgrade[7].bought) {
+    if(yUpgrade.primary[1].bought) {
+        document.querySelectorAll(".center")[0].style.display = "flex"
+        document.querySelectorAll(".upgrade")[5].style.display = "grid"
+    }
+    if(yUpgrade.primary[7].bought) {
         document.querySelectorAll(".upgrade")[6].style.display = "grid"
         document.querySelectorAll(".upgrade")[7].style.display = "grid"
-        //document.querySelectorAll(".upgrade")[8].style.display = "grid"
+        document.querySelectorAll(".upgrade")[8].style.display = "grid"
         document.querySelectorAll(".mastery")[7].style.display = "grid"
         document.querySelectorAll(".mastery")[8].style.display = "grid"
-        //document.querySelectorAll(".mastery")[9].style.display = "grid"
+        document.querySelectorAll(".mastery")[9].style.display = "grid"
     }
+
+    if(game.totalY >= 50) document.querySelector(".ySecondary-left").style.display = "block"
+    if(game.totalY >= 50) document.querySelector(".ySecondary-right").style.display = "block"
     
     document.querySelector(`#${game.currentTab}`).style.display = "grid"
 
@@ -290,4 +370,3 @@ const reset = () => {
 	location.reload()
 	}
 }
-
