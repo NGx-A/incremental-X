@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root {
-    --progressBarText: "0";
-    --progressBarWidth: 5%;
+    --progressBarWidth: 0%;
 }
 
 * {
@@ -28,51 +27,103 @@ body {
 
 .currency-container {
     display: flex;
+    position: fixed;
     width: 100vw;
-    height: 3em;
+    height: 4rem;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: bold;
     background-color: #222;
+    z-index: 10;
+}
+
+.currency-container::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "";
+    position: absolute;
+    left: 0;
+    min-width: 0%;
+    width: var(--progressBarWidth);
+    height: 100%;
+    background-color: rgba(172, 255, 47, 0.75);
+    box-shadow: 0 0 100px rgba(172, 255, 47, 0.75);
+    transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .currency {
     margin-left: 1.5em;
-    text-shadow: 0 0 5px currentColor;
+    text-shadow: 0.1em 0.1em 3px #333;
+    z-index: 100;
 }
 
 .currencyPerSec {
     font-size: 0.6em;
-    color: #999;
+    color: red;
     position: relative;
     bottom: 1em;
     font-style: italic;
+    z-index: 100;
+    text-shadow: 0.05em 0.05em 3px #333;
+}
+
+.mastery-container {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    top: 8em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .navBar {
     display: flex;
+    position: fixed;
     justify-content: center;
-    align-items: center;
-    width: 100vw;
+    align-items: left;
+    flex-direction: column;
+    height: 100vh;
+    width: 10rem;
+    left: 0;
     color: white;
+    z-index: 100;
+    cursor: pointer;
+    font-size: 1.5rem;
 }
 
-.navBtn {
-    font-size: 1.5rem;
-    padding: 0.55em;
-    background-color: #333;
-    border-radius: 0.3em;
-    margin: 0.4em;
-    transition: 0.2s ease-in all;
-    cursor: pointer;
-    min-width: 2em;
+.navBtn,
+.navBtn.mastery {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    padding: 1.25em 3em 1.25em 3em;
+    height: 2em;
     text-align: center;
+    transition: all 0.15s ease-in-out;
 }
 
 .navBtn:hover {
-    border-radius: 0;
+    background-color: #333;
+    width: 7em;
+    transform: translatex(20%);
+    border-bottom: 1px solid currentColor;
+}
+
+.autobuyer-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 10em;
+    top: 30em;
+    color: white;
+    scale: 1.3;
+    z-index: 100;
 }
 
 .button {
@@ -85,7 +136,6 @@ body {
     font-size: 1rem;
     height: 10em;
     width: 14em;
-    padding: 1em;
     border-radius: 0.4em 0.4em 0 0;
     border-bottom: 0.5em solid white;
     transition: 0.2s ease-in all;
@@ -94,62 +144,25 @@ body {
 
 .button:hover {
     border-bottom: grey 0.5em solid;
+    scale: 1.05;
 }
 
 .masteryProgress {
     position: relative;
-    top: 6em;
-    font-size: 1.1rem;
-}
-
-.progressBar {
-    position: relative;
-    width: 25em;
-    height: 1em;
-    background-color: white;
-    border-radius: 10em;
-    top: 8em;
-    color: white;
-    font-size: 1rem;
-}
-
-.progressBar::after {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    content: var(--progressBarText);
-    position: absolute;
-    left: 0;
-    min-width: 5%;
-    width: var(--progressBarWidth);
-    height: 100%;
-    background: linear-gradient(30deg, aqua, magenta);
-    box-shadow: 0 0 10px white;
-    border-radius: 10em;
-    transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-
-.tab {
-    position: absolute;
-    display: grid;
-    grid-template-columns: repeat(3, 15em);
-    place-content: center;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    color: white;
-    top: 23em;
+    font-size: 1.5rem;
+    border-bottom: 3px solid red;
 }
 
 .prestige-container {
+    position: absolute;
     display: flex;
     justify-content: center;
-    position: absolute;
     width: 100vw;
-    top: 65em;
+    top: 55em;
+    z-index: 100;
 }
 
-.button.prestige {
+.button.yprestige {
     background-color: rgb(255, 0, 0);
 }
 
@@ -159,7 +172,9 @@ body {
 }
 
 
-.yPrimary-container {
+.primary-container,
+#mastery,
+#settings {
     position: absolute;
     display: grid;
     grid-template-columns: repeat(3, 15em);
@@ -168,24 +183,23 @@ body {
     align-items: center;
     width: 100vw;
     color: white;
-    top: 0;
+    top: 15em;
 }
 
-.yUpgrade {
+.secondary-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 75em);
+    width: 100vw;
+    top: 10em;
+}
+
+.yUpgrade, 
+.upgrade {
     z-index: 3;
 }
-
-.ySecondary-container {
+.secondaryUpgrade {
     position: relative;
-    right: 20em;
-    display: grid;
-    grid-template-columns: repeat(2, 68em);
-    bottom: 5em;
-    z-index: 1;
-}
-
-.ySecondary {
-    background: radial-gradient(circle at 100%, red, orange);
     display: grid;
     place-content: center;
     width: 10em;
@@ -196,9 +210,22 @@ body {
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    left: 28.5em;
+    color: white;
+    background: linear-gradient(260deg, grey, black);
+    z-index: 1;
 }
 
-.ySecondary:hover {
+.msu:hover {
+    scale: 1.05;
+}
+
+.ysu {
+    background: radial-gradient(circle at 100%, red, orange);
+}
+
+.ysu:hover {
+    scale: 1.05;
     filter: hue-rotate(20deg);
 }
 
@@ -207,9 +234,20 @@ body {
     text-shadow: 0 0 5px currentColor;
 }
 
-.mastery {
+.zUpgrade,
+.button.zprestige {
+    background: linear-gradient(30deg, aqua, blue)
+}
+
+.zUpgrade:hover,
+.button.zprestige:hover {
+    filter: hue-rotate(-20deg);
+}
+
+.button.mastery {
     color: white;
-    background: linear-gradient(300deg, aqua, magenta);
+    background: black;
+    border: 1px solid white;
     border-bottom: 0.5em solid white;
     transition: 0.2s ease-in all;
 }
@@ -219,27 +257,13 @@ body {
     text-shadow: 0 0 1em currentColor;
 }
 
-.mastery.navBtn {
-    position: absolute;
-    top: 6em;
-}
-
-.mastery:hover {
-    filter: hue-rotate(30deg);
+.button.mastery:hover {
+    background-color: grey;
 }
 
 #superCharges {
-    position: absolute;
-    width: 100vw;
-    text-align: center;
-    top: -2em;
+    position: relative;
     font-size: 1.2rem;
+    color: white;
 }
 
-.center {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
