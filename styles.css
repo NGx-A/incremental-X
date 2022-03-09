@@ -31,7 +31,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
     font-weight: bold;
     background-color: #222;
     z-index: 10;
@@ -59,7 +59,7 @@ body {
 }
 
 .currencyPerSec {
-    font-size: 1vmin;
+    font-size: 1.3vmin;
     color: red;
     position: relative;
     bottom: 1vmin;
@@ -90,7 +90,7 @@ body {
     color: white;
     z-index: 100;
     cursor: pointer;
-    font-size: 2vmin;
+    font-size: 2.4vmin;
 }
 
 .navBtn,
@@ -99,8 +99,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 5vmin;
-    padding: 2vmin 6vmin 2vmin 6vmin;
+    width: 7vmin;
+    padding: 2.5vmin 7vmin 2.5vmin 7vmin;
     height: 5vmin;
     text-align: center;
     transition: all 0.15s ease-in-out;
@@ -108,7 +108,6 @@ body {
 
 .navBtn:hover {
     background-color: #333;
-    width: 7vmin;
     transform: translatex(20%);
     border-bottom: 1px solid currentColor;
 }
@@ -129,11 +128,11 @@ body {
     place-content: center;
     background-color: #222;
     color: white;
-    margin: 1vmin;
+    margin: 1.25vmin;
     text-align: center;
-    font-size: 1.2vmin;
-    height: 13vmin;
-    width: 18vmin;
+    font-size: 1.75vmin;
+    height: 17.5vmin;
+    width: 25vmin;
     border-radius: 0.4vmin 0.4vmin 0 0;
     border-bottom: 0.5vmin solid white;
     transition: 0.2s ease-in all;
@@ -147,7 +146,7 @@ body {
 
 .masteryProgress {
     position: relative;
-    font-size: 1.8vmin;
+    font-size: 2.2vmin;
     border-bottom: 3px solid red;
 }
 
@@ -156,7 +155,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100vw;
-    top: 65vmin;
+    top: 80vmin;
     z-index: 100;
 }
 
@@ -175,7 +174,7 @@ body {
 #settings {
     position: absolute;
     display: grid;
-    grid-template-columns: repeat(3, 20vmin);
+    grid-template-columns: repeat(3, 27.5vmin);
     place-content: center;
     width: 100vw;
     color: white;
@@ -186,7 +185,7 @@ body {
     position: absolute;
     display: grid;
     place-content: center;
-    grid-template-columns: repeat(3, 95vmin);
+    grid-template-columns: repeat(3, 110vmin);
     width: 100vw;
     top: 15vmin;
 }
@@ -199,15 +198,15 @@ body {
     position: relative;
     display: grid;
     place-content: center;
-    width: 15vmin;
-    height: 15vmin;
+    width: 18vmin;
+    height: 18vmin;
     border-radius: 10vmin;
     margin: 2.5vmin;
     text-align: center;
-    font-size: 1.5vmin;
+    font-size: 2vmin;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    left: 85vmin;
+    left: 98vmin;
     color: white;
     background: linear-gradient(260deg, grey, black);
     z-index: 1;
@@ -260,7 +259,7 @@ body {
 
 #superCharges {
     position: relative;
-    font-size: 1.5vmin;
+    font-size: 1.75vmin;
     color: white;
 }
 
